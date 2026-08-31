@@ -1,0 +1,11 @@
+{
+  "title": "Modus ponens: from P, P -> Q, Q -> R infer R",
+  "description": "Lines 1, 2 and 4 are premises (assumptions). Line 3 uses modus ponens on lines 1 and 2: with P and P -> Q we may infer Q. Line 5 uses modus ponens on lines 3 and 4: with Q and Q -> R we may infer R.",
+  "steps": [
+    {"rule": "premise", "statement": "P", "refs": []},
+    {"rule": "premise", "statement": "P -> Q", "refs": []},
+    {"rule": "modus ponens", "statement": "Q", "refs": [1, 2]},
+    {"rule": "premise", "statement": "Q -> R", "refs": []},
+    {"rule": "modus ponens", "statement": "R", "refs": [3, 4]}
+  ]
+}

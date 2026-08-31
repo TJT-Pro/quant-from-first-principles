@@ -1,0 +1,9 @@
+{
+  "description": "Joint distribution of weather X (rain/dry) and umbrella carrying Y (yes/no). Rows sum to P(X), columns sum to P(Y).",
+  "table": {
+    "[rain, yes]": 0.36,
+    "[rain, no]": 0.04,
+    "[dry, yes]": 0.24,
+    "[dry, no]": 0.36
+  }
+}

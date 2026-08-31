@@ -1,0 +1,9 @@
+{
+  "title": "Modus tollens: from P -> Q and NOT Q infer NOT P",
+  "description": "Both lines are premises. With P -> Q and the negation of Q, modus tollens licenses the inference of NOT P.",
+  "steps": [
+    {"rule": "premise", "statement": "P -> Q", "refs": []},
+    {"rule": "premise", "statement": "NOT Q", "refs": []},
+    {"rule": "modus tollens", "statement": "NOT P", "refs": [1, 2]}
+  ]
+}
