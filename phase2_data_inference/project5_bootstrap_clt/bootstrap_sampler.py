@@ -1,38 +1,3 @@
-"""A resampling library built entirely by hand.
-
-The bootstrap, the jackknife and the permutation test all answer the
-same question in slightly different ways: what would this statistic do
-if we could resample the world?  No numpy, scipy or pandas here.  The
-resampling is done with the standard library's random module, seeded
-so any run can be reproduced exactly.
-
-The bootstrap draws many samples with replacement and recalculates the
-statistic on each one, giving an empirical distribution of the
-statistic.  Confidence intervals come from that distribution in four
-ways:
-
-    percentile   the alpha/2 and 1-alpha/2 quantiles directly
-    basic        the same quantiles reflected around the estimate
-    normal       estimate +- z * bootstrap standard error
-    BCa          bias-corrected and accelerated, the most careful
-
-The jackknife leaves out one observation at a time.  It gives a
-de-biased estimate, a bias term and a standard error, and for the mean
-it reproduces the classic formula exactly: the jackknife standard
-error of the mean is the sample standard deviation over sqrt(n).
-
-The permutation test shuffles the pooled data many times, recomputes
-the test statistic on each shuffle, and reports how often the shuffled
-statistic reaches or passes the observed one.  That is the p-value: an
-answer computed from the data alone, with no parametric assumptions.
-
-The CLT functions draw many samples from a population and inspect the
-distribution of their means.  As the sample size grows that distribution
-should approach a normal one centered on the population mean with
-standard deviation population_sd / sqrt(sample_size), which is exactly
-what the central limit theorem promises.
-"""
-
 import math
 import random
 

@@ -118,7 +118,7 @@ def cmd_verify(args):
     """Run a battery of self-checks.
 
     scipy and Python's own set() are used here purely as independent
-    oracles to compare against - the implementations themselves never
+    reference values to compare against - the implementations never
     import them."""
     import math
     failures = []

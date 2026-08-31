@@ -1,21 +1,3 @@
-"""Command-line interface for PCA from scratch.
-
-Usage
------
-    python3 cli.py pca       --data PATH [--lags N] [--k K] [--std]
-    python3 cli.py scree     --data PATH [--lags N] [--std]
-    python3 cli.py reconstruct --data PATH [--lags N] [--k K]
-    python3 cli.py whiten    --data PATH [--lags N] [--k K]
-    python3 cli.py verify
-
-Examples
---------
-    python3 cli.py pca    --data data/DEXUSEU_returns.csv --lags 5 --k 3
-    python3 cli.py scree  --data data/DEXUSEU_returns.csv --lags 5
-    python3 cli.py reconstruct --data data/DEXUSEU_returns.csv --lags 5 --k 2
-    python3 cli.py verify
-"""
-
 import argparse
 import math
 import os

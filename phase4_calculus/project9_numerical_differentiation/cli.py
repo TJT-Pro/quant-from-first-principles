@@ -1,38 +1,3 @@
-"""Command-line interface for the numerical differentiation engine.
-
-Usage
------
-    python3 cli.py diff     --f EXPR --x X [--method central] [--h H]
-    python3 cli.py gradient --f EXPR --x X1,X2,... [--method central]
-    python3 cli.py second   --f EXPR --x X [--h H]
-    python3 cli.py error    --f EXPR --x X --exact EXACT [--method central]
-    python3 cli.py product  --f EXPR --g EXPR --x X
-    python3 cli.py chain    --f EXPR --g EXPR --x X
-    python3 cli.py descent  --f EXPR --x X1,X2,... [--lr 0.01] [--iters 1000]
-    python3 cli.py bond     --yield Y --coupon C --face F --n N [--dy DY]
-    python3 cli.py verify
-
-Function expressions
---------------------
-EXPR is a Python expression string using x as the variable for 1D
-functions and x (a list) for multivariate.  Use standard math functions:
-sin, cos, exp, log, sqrt, pi.
-
-Examples
---------
-    python3 cli.py diff --f "x**2" --x 3
-    python3 cli.py diff --f "sin(x)" --x 0 --method five-point
-    python3 cli.py gradient --f "x[0]**2 + x[1]**2" --x 1.0,2.0
-    python3 cli.py second --f "exp(x)" --x 0
-    python3 cli.py error --f "sin(x)" --x 1.0 --exact 0.5403023058681398
-    python3 cli.py product --f "sin(x)" --g "exp(x)" --x 1.0
-    python3 cli.py chain --f "sin(x)" --g "x**2" --x 1.0
-    python3 cli.py descent --f "x[0]**2 + x[1]**2" --x 3.0,4.0 --lr 0.1
-    python3 cli.py bond --yield 0.05 --coupon 50 --face 1000 --n 10
-    python3 cli.py bond --yield 0.05 --coupon 50 --face 1000 --n 10 --dy 0.01
-    python3 cli.py verify
-"""
-
 import argparse
 import math
 import sys

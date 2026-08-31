@@ -1,25 +1,3 @@
-"""Command-line front end for the decision theory library.
-
-    python3 cli.py ev --outcomes a,b,c --probs p,q,r [--g identity|square|log]
-    python3 cli.py decide --payoffs "a1,a2;b1,b2" [--probs p1,p2]
-                    [--rule expected-value|maximax|maximin|minimax-regret|laplace|hurwicz]
-                    [--alpha 0.5]
-    python3 cli.py dominates --payoffs "a1,a2;b1,b2" --a 0 --b 1
-    python3 cli.py ce --outcomes a,b,c --probs p,q,r --utility log|power|exponential|quadratic|linear
-                    [--param 0.5]
-    python3 cli.py risk --utility log [--param] --x 100
-    python3 cli.py stpetersburg --tosses 20 [--utility log]
-    python3 cli.py kelly-binary --p 0.55 --odds 1
-    python3 cli.py kelly FILE.csv --col NAME [--fraction 0.5] [--rounds 250]
-    python3 cli.py invest FILE.csv --col NAME --utility exponential --param 10
-    python3 cli.py verify
-
-Commas separate values, a semicolon separates the actions in a payoff
-matrix.  The expected value rule needs --probs; the other rules need
-none.  `verify` checks the machinery against numpy and scipy using the
-real EUR/USD returns in data/.
-"""
-
 import argparse
 import csv
 import sys

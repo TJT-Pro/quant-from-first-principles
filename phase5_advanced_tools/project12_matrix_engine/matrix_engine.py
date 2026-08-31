@@ -1,33 +1,3 @@
-"""Matrix engine built from definitions.
-
-Linear algebra is the language of data.  Every regression model, every
-dimensionality reduction, every system of equations is expressed in
-matrices.  This module builds the machinery from scratch using only
-Python lists and arithmetic.
-
-    Matrix representation    list of rows, each row a list of floats
-    Basic operations         add, subtract, scalar multiply, transpose
-    Matrix multiply          O(n³) schoolbook algorithm
-    Dot product              inner product of two vectors
-    Norms                    L1, L2 (Euclidean), L∞ (max) vector norms
-    Determinant              cofactor expansion (exact, recursive)
-    Trace                    sum of diagonal elements
-    Identity / zeros         standard constructors
-    LU decomposition         PA = LU with partial pivoting
-    Forward / back sub       solve triangular systems
-    Linear solve             Ax = b via LU decomposition
-    Matrix inverse           A⁻¹ via LU solve against identity columns
-    Eigenvalues (2×2)        closed-form quadratic formula
-    Power iteration          dominant eigenpair of a symmetric matrix
-    QR decomposition         modified Gram-Schmidt
-    Least squares            min ||Ax - b||₂ via QR
-    Condition number         ratio of largest to smallest singular value
-                             approximated via power iteration on AᵀA
-
-Everything is represented as list-of-lists.  No numpy arrays, no scipy,
-no external linear algebra libraries.
-"""
-
 import math
 
 

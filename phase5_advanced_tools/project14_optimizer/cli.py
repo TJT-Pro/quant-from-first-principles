@@ -1,27 +1,3 @@
-"""Command-line interface for the gradient descent optimizer and LP solver.
-
-Usage
------
-    python3 cli.py gd       --fn EXPR --x0 X,Y [--lr LR] [--iters N]
-    python3 cli.py momentum --fn EXPR --x0 X,Y [--lr LR] [--beta B]
-    python3 cli.py rmsprop  --fn EXPR --x0 X,Y [--lr LR]
-    python3 cli.py adam     --fn EXPR --x0 X,Y [--lr LR]
-    python3 cli.py neldermead --fn EXPR --x0 X,Y
-    python3 cli.py lp       --c C1,C2 --A "[[a,b],[c,d]]" --b B1,B2
-    python3 cli.py logistic --data PATH
-    python3 cli.py verify
-
-Function expressions use x0, x1 as variable names (for 2D functions).
-
-Examples
---------
-    python3 cli.py gd        --fn "(x0-3)**2+(x1+2)**2" --x0 0,0 --lr 0.1
-    python3 cli.py adam      --fn "(1-x0)**2+100*(x1-x0**2)**2" --x0 0,0 --lr 0.01 --iters 10000
-    python3 cli.py lp        --c "-1,-1" --A "[[1,1],[1,0],[0,1]]" --b "4,3,3"
-    python3 cli.py logistic  --data data/DEXUSEU_returns.csv
-    python3 cli.py verify
-"""
-
 import argparse
 import ast
 import math

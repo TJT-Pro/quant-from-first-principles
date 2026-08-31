@@ -1,37 +1,3 @@
-"""Command-line interface for the gradient field analyser.
-
-Usage
------
-    python3 cli.py partial   --f EXPR --point X,Y[,Z] --i I
-    python3 cli.py gradient  --f EXPR --point X,Y[,Z]
-    python3 cli.py directional --f EXPR --point X,Y --dir DX,DY
-    python3 cli.py hessian   --f EXPR --point X,Y
-    python3 cli.py classify  --f EXPR --point X,Y
-    python3 cli.py descent   --f EXPR --x0 X --y0 Y [--lr LR] [--iters N]
-    python3 cli.py compare   --f EXPR --x0 X --y0 Y --rates R1,R2,...
-    python3 cli.py field     --f EXPR --xmin A --xmax B --ymin C --ymax D
-    python3 cli.py divergence --fx EXPR --fy EXPR --point X,Y
-    python3 cli.py curl      --fx EXPR --fy EXPR --point X,Y
-    python3 cli.py verify
-
-Function expressions use x, y, z as variables with standard math
-functions: sin, cos, exp, log, sqrt, pi, e, abs, tan.
-
-Examples
---------
-    python3 cli.py partial   --f "x**2+y**2" --point 3,4 --i 0
-    python3 cli.py gradient  --f "sin(x)*cos(y)" --point 0.5,1.0
-    python3 cli.py directional --f "x**2+y**2" --point 3,4 --dir 1,0
-    python3 cli.py hessian   --f "x**2+y**2" --point 1,1
-    python3 cli.py classify  --f "x**2-y**2" --point 0,0
-    python3 cli.py descent   --f "x**2+y**2" --x0 3 --y0 4 --lr 0.1
-    python3 cli.py compare   --f "x**2+y**2" --x0 5 --y0 5 --rates 0.01,0.1,0.5
-    python3 cli.py field     --f "x**2+y**2" --xmin -2 --xmax 2 --ymin -2 --ymax 2
-    python3 cli.py divergence --fx "x" --fy "y" --point 1,2
-    python3 cli.py curl      --fx "-y" --fy "x" --point 1,2
-    python3 cli.py verify
-"""
-
 import argparse
 import math
 import sys

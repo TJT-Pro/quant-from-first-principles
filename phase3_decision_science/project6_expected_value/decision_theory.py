@@ -1,32 +1,3 @@
-"""An expected value and decision theory library, all from definitions.
-
-The core question of decision theory is simple: when you must choose
-between actions whose consequences depend on an uncertain state of the
-world, how do you choose?  This module builds the standard answers,
-each from its own definition:
-
-    expected value        the probability-weighted average payoff
-    decision rules        maximax, maximin, minimax regret, Laplace,
-                          Hurwicz, and the expected value rule itself
-    dominance             an action that is at least as good in every
-                          state and better in some state is never wrong
-    expected utility      probabilities weighted by a utility function,
-                          the rule that handles risk attitudes
-    certainty equivalent  the guaranteed amount an agent would trade a
-                          risky lottery for
-    risk premium          expected value minus certainty equivalent,
-                          what the agent pays to avoid the risk
-    prospect theory       a behavioral alternative: losses are weighted
-                          more than gains, probabilities are distorted
-    Kelly criterion       the bet size that maximizes expected log
-                          growth of wealth
-
-The utility families are linear (risk neutral), logarithmic, power
-(CRRA), exponential (CARA) and quadratic, each with its exact inverse
-and its Arrow-Pratt risk aversion measures.  No numpy, scipy or pandas
-appear anywhere in the code; the standard library is enough.
-"""
-
 import math
 
 

@@ -1,39 +1,3 @@
-"""Command-line interface for the numerical integrator and Taylor series expander.
-
-Usage
------
-    python3 cli.py integrate  --f EXPR --a A --b B [--method METHOD] [--n N]
-    python3 cli.py compare    --f EXPR --a A --b B --exact EXACT [--n N]
-    python3 cli.py adaptive   --f EXPR --a A --b B [--tol TOL]
-    python3 cli.py gauss      --f EXPR --a A --b B [--n N]
-    python3 cli.py improper   --f EXPR --a A --b B [--n N]
-    python3 cli.py taylor     --f EXPR --x0 X0 --degree D [--at X,X,...]
-    python3 cli.py normal-cdf --x X [--mu MU] [--sigma SIGMA]
-    python3 cli.py bs-call    --S S --K K --r R --sigma SIGMA --T T
-    python3 cli.py bond-dur   --yield Y --coupon C --T T
-    python3 cli.py verify
-
-Function expressions
---------------------
-EXPR uses x as the variable with standard math functions available:
-sin, cos, exp, log, sqrt, pi, e, abs, tan, sinh, cosh.
-
-Use inf or -inf for infinite limits in the improper command.
-
-Examples
---------
-    python3 cli.py integrate --f "sin(x)" --a 0 --b "pi" --method simpsons --n 100
-    python3 cli.py compare   --f "exp(x)" --a 0 --b 1 --exact 1.718281828459045
-    python3 cli.py adaptive  --f "sin(x)" --a 0 --b "pi"
-    python3 cli.py gauss     --f "exp(x)" --a 0 --b 1 --n 5
-    python3 cli.py improper  --f "exp(-x**2)" --a 0 --b inf
-    python3 cli.py taylor    --f "sin(x)" --x0 0 --degree 9 --at "-1,0,0.5,1"
-    python3 cli.py normal-cdf --x 1.96
-    python3 cli.py bs-call   --S 100 --K 100 --r 0.05 --sigma 0.2 --T 1
-    python3 cli.py bond-dur  --yield 0.05 --coupon 0.06 --T 10
-    python3 cli.py verify
-"""
-
 import argparse
 import math
 import sys

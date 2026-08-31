@@ -1,36 +1,3 @@
-"""Command-line interface for the strategy backtester.
-
-Usage
------
-    python3 cli.py report   FILE.csv --col NAME [options]
-    python3 cli.py stats    FILE.csv --col NAME [options]
-    python3 cli.py ttest    FILE.csv --col NAME [--mu0 0.0]
-    python3 cli.py boot     FILE.csv --col NAME [--n-boot 1000]
-    python3 cli.py permute  FILE.csv --col NAME [--stat sharpe|expectancy|mdd]
-    python3 cli.py simulate FILE.csv --col NAME [--strategy ma|mr]
-    python3 cli.py verify
-
-Options
--------
-    --col          column name for per-trade returns
-    --rf           risk-free rate per period, default 0.0
-    --periods      trading periods per year, default 252
-    --n-boot       number of bootstrap resamples, default 1000
-    --n-perm       number of permutations, default 5000
-    --mu0          null hypothesis mean for t-test, default 0.0
-    --stat         statistic for permutation test: sharpe, expectancy, or mdd
-    --strategy     ma (moving average crossover) or mr (mean reversion)
-    --seed         integer seed for reproducibility
-
-Examples
---------
-    python3 cli.py report   data/DEXUSEU_returns.csv --col return
-    python3 cli.py ttest    data/DEXUSEU_returns.csv --col return
-    python3 cli.py simulate data/DEXUSEU_returns.csv --col return --strategy ma
-    python3 cli.py permute  data/DEXUSEU_returns.csv --col return --stat sharpe
-    python3 cli.py verify
-"""
-
 import argparse
 import csv
 import sys

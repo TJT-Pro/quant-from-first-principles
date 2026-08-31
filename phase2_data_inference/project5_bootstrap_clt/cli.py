@@ -1,20 +1,3 @@
-"""Command-line front end for the resampling library.
-
-    python3 cli.py bootstrap FILE.csv --col NAME [--statistic STAT]
-                    [--n N] [--ci LEVEL] [--method METHOD] [--seed S]
-    python3 cli.py jackknife FILE.csv --col NAME [--statistic STAT]
-    python3 cli.py permtest FILE.csv --a COL --b COL [--n N] [--seed S]
-    python3 cli.py permtest FILE.csv --col NAME --split N [--n N] [--seed S]
-    python3 cli.py clt FILE.csv --col NAME --sample-sizes 1,5,30,100
-                    [--n-samples N] [--seed S]
-    python3 cli.py verify
-
-statistic is one of mean, median, std or variance.  Every command takes
-a --seed so runs can be reproduced exactly.  `verify` checks the
-bootstrap, jackknife, permutation test and CLT machinery against scipy
-on the real EUR/USD returns in data/.
-"""
-
 import argparse
 import csv
 import math

@@ -1,28 +1,3 @@
-"""
-Probability simulation and Bayes' theorem, written by hand.
-
-The only randomness borrowed from a library is the raw uniform draw,
-``random.random()``.  Everything built on top of that is implemented here
-from the definitions: coin flips, dice, empirical probabilities,
-conditional probabilities from a joint table, the Bayes engine, and
-samplers for the Binomial, Geometric and Poisson distributions.
-
-What's in the file:
-
-    basic     - coin flips, die rolls, empirical probability
-    condition - joint probability tables, marginals, P(A|B),
-                sampling from a joint table to check the math
-    bayes     - prior, likelihood, posterior
-    sample    - Binomial, Geometric and Poisson samplers plus the
-                theoretical PMFs to compare against
-    converge  - running means and the law of large numbers
-
-Functions that draw plots import matplotlib lazily and only when asked;
-the core code works with nothing but the standard library.  Every
-function that uses randomness takes an optional ``rng`` argument so
-results are reproducible with a fixed seed.
-"""
-
 import json
 import math
 import random
@@ -127,7 +102,7 @@ def sample_joint(table, n=1, rng=None):
 
     Builds the cumulative distribution of the (x, y) pairs and inverts a
     uniform draw against it, the standard way to sample a discrete
-    distribution from scratch.
+    distribution.
     """
     _check_joint_table(table)
     rng = rng or random

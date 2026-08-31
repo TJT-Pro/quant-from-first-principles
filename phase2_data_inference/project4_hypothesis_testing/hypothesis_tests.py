@@ -1,34 +1,3 @@
-"""A hypothesis testing library built entirely by hand.
-
-Every distribution function here is implemented from its mathematical
-definition.  The normal CDF uses the standard error function; the t and
-chi-squared CDFs come from the incomplete beta and incomplete gamma
-functions, which are evaluated with the classic continued fraction and
-series expansions from Numerical Recipes.  No numpy, scipy or pandas
-anywhere in this module, so every p-value can be traced back to the
-formula it came from.
-
-The test functions follow the usual conventions: the null hypothesis is
-stated first, the test statistic is computed from the data, and the
-p-value answers "how often would random data give a statistic this
-extreme or more, if the null were true?"  A small p-value is evidence
-against the null; it is not proof that the alternative is true, and it
-says nothing about whether the effect matters.
-
-Supported tests:
-
-    z_test                 known population sigma, one or two samples
-    t_test_one_sample      unknown sigma, compare mean to mu0
-    t_test_two_sample      two independent samples, pooled or Welch
-    t_test_paired          paired observations, test on the differences
-    chi2_goodness_of_fit   observed counts against expected counts
-    chi2_independence      contingency table, rows vs columns
-    binomial_proportion_test   z test on a single proportion
-
-Plus confidence intervals for means and proportions, Cohen's d for
-effect size, and z-test power and sample size helpers.
-"""
-
 import math
 
 _TWO_PI = 2.0 * math.pi

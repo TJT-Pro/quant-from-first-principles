@@ -1,33 +1,3 @@
-"""
-The math behind Project 1, written by hand.
-
-Everything here uses nothing but the standard library - no numpy, no scipy.
-The one rule I set for myself while writing the set code is that Python's
-built-in ``set`` type is banned.  Union, intersection, power set and the
-rest had to be written with plain lists, because the whole point of the
-exercise is to actually know what those operations do instead of calling
-them.
-
-What's in the file:
-
-    logic   - a small recursive-descent parser for propositional formulas,
-              an evaluator, and a truth-table generator
-    sets    - union, intersection, difference, symmetric difference,
-              power set, cartesian product
-    count   - factorial, nPr, nCr, all in exact integer arithmetic
-    graphs  - DFS and BFS over a directed graph kept as an adjacency dict
-    proofs  - a validator for modus ponens / modus tollens steps
-
-Operators, strongest to weakest:
-
-    NOT  !  ~        AND  &        XOR  ^        OR  |
-    IMPLIES  ->  =>  IFF  <->  <=>
-
-Binary operators are left-associative and parentheses override precedence.
-Variable names start with a letter or underscore and can contain letters,
-digits and underscores (so ``P``, ``rain`` and ``A1`` all work).
-"""
-
 from collections import deque
 import itertools
 import json

@@ -1,31 +1,3 @@
-"""Monte Carlo risk and drawdown analysis, built from definitions.
-
-Every number this module produces is computed from a formula, not pulled
-from a library.  The ideas covered are:
-
-    return simulation     draw synthetic paths from a fitted normal or
-                          Student-t distribution using only uniform
-                          random numbers and the Box-Muller transform
-    Value at Risk         the loss not exceeded with probability 1 - alpha,
-                          measured historically and parametrically
-    CVaR                  Conditional Value at Risk, the mean loss in the
-                          tail beyond the VaR threshold (also called
-                          Expected Shortfall)
-    drawdown              the peak-to-trough decline of an equity curve
-                          at every point in time
-    maximum drawdown      the largest such decline over the whole series
-    drawdown duration     how many periods the curve stays below its
-                          previous peak
-    Calmar ratio          annualised return divided by maximum drawdown
-    ruin probability      fraction of simulated paths that breach a
-                          given drawdown threshold
-    confidence interval   bootstrap percentile interval around any
-                          point estimate
-
-The module is self-contained: math and random from the standard library
-are the only imports.
-"""
-
 import math
 import random
 
@@ -58,7 +30,7 @@ def _sorted_copy(values):
 
 
 # ---------------------------------------------------------------------------
-# Random number generation from scratch
+# Random number generation
 # ---------------------------------------------------------------------------
 
 def _uniform_pair(rng):

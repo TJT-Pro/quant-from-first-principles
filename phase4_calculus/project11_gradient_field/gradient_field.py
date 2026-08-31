@@ -1,33 +1,3 @@
-"""Gradient field analyser and partial derivative engine.
-
-Multivariable calculus is where the ideas of differentiation generalise
-from one dimension to many.  A function of two or three variables has a
-partial derivative in each direction, a gradient vector that points in
-the direction of steepest ascent, a Hessian matrix that encodes the
-local curvature, and a Laplacian that measures how the function value
-compares to its neighbourhood average.
-
-This module implements all of those from scratch using central finite
-differences, then applies them to gradient descent with trajectory
-tracking, saddle-point detection, directional derivatives, and level-
-curve analysis.
-
-    partial_derivative     d/dx_i of f at a point, by central difference
-    gradient               full gradient vector at a point
-    directional_derivative rate of change along a unit vector
-    hessian                matrix of second partial derivatives
-    laplacian              trace of the Hessian (sum of d²f/dx_i²)
-    gradient_descent_2d    minimise a 2D function, record the trajectory
-    classify_critical      classify a critical point via the Hessian
-    gradient_norm_field    ||∇f|| on a 2D grid (for contour analysis)
-    level_curve_points     sample points near a given level f(x,y) = c
-    divergence             ∇·F of a vector field F: R² → R²
-    curl_z                 z-component of ∇×F (scalar curl in 2D)
-
-All derivatives are computed by central differences with one step of
-Richardson extrapolation.  No sympy, no autograd, no numpy.
-"""
-
 import math
 
 

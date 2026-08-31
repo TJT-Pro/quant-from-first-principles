@@ -1,25 +1,3 @@
-"""
-Descriptive statistics, written by hand.
-
-No numpy, no pandas, no scipy anywhere in this file.  The formulas are
-implemented directly from their definitions, which is the point of the
-project: variance, standard deviation, skewness, kurtosis, covariance and
-correlation are each computed step by step, not pulled from a library.
-
-Functions take any iterable of numbers and return plain values.  On empty
-input they raise ValueError.  Sample-based statistics use the n-1
-denominator (Bessel's correction) and raise ValueError when the sample is
-too small to support them.
-
-List of functions:
-
-    basic     mean, median, mode, data_range, quantile, iqr
-    spread    variance and standard deviation, population and sample
-    shape     skewness and kurtosis, with the scipy conventions
-    joint     covariance and Pearson correlation for two series
-    time      pct_change for computing returns from prices
-"""
-
 import math
 
 

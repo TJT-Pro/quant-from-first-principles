@@ -1,25 +1,3 @@
-"""Command-line front end for the hypothesis testing library.
-
-    python3 cli.py ztest --mean M --mu0 M0 --sigma S --n N [--alternative]
-    python3 cli.py ttest-one FILE --col NAME --mu0 M [--alternative]
-    python3 cli.py ttest-two FILE --a COL --b COL [--equal-var] [--alternative]
-    python3 cli.py ttest-paired FILE --a COL --b COL [--alternative]
-    python3 cli.py chisq-fit --observed OBS --expected EXP [--alpha]
-    python3 cli.py chisq-ind --matrix "a,b;c,d" [--alpha]
-    python3 cli.py prop-test --k K --n N --p0 P [--alternative] [--continuity]
-    python3 cli.py ci-mean FILE --col NAME [--alpha]
-    python3 cli.py ci-proportion --k K --n N [--alpha]
-    python3 cli.py power --effect-size E --sigma S --n N [--alternative]
-    python3 cli.py sample-size --effect-size E --sigma S [--power P]
-    python3 cli.py verify
-
-Comma separated values make up the observed and expected lists, and a
-semicolon separates rows for the contingency matrix, so the 2x2 table
-"top-left,top-right;bottom-left,bottom-right" is written as a,b;c,d.
-The `verify` command checks every distribution and test against scipy
-using the real EUR/USD returns in data/.
-"""
-
 import argparse
 import csv
 import math

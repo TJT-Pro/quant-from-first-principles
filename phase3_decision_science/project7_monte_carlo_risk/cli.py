@@ -1,33 +1,3 @@
-"""Command-line interface for the Monte Carlo risk analyser.
-
-Usage
------
-    python3 cli.py report   FILE.csv --col NAME [options]
-    python3 cli.py var      FILE.csv --col NAME [--alpha 0.05]
-    python3 cli.py cvar     FILE.csv --col NAME [--alpha 0.05]
-    python3 cli.py drawdown FILE.csv --col NAME
-    python3 cli.py ruin     FILE.csv --col NAME [--threshold 0.2]
-    python3 cli.py simulate FILE.csv --col NAME [options]
-    python3 cli.py verify
-
-Options shared by most commands
---------------------------------
-    --alpha       tail probability, default 0.05 (95% confidence)
-    --paths       number of Monte Carlo paths, default 10000
-    --periods     path length in periods, default = length of series
-    --dist        normal or t, default normal
-    --df          degrees of freedom when dist=t, default 5
-    --seed        integer seed for reproducibility
-    --threshold   drawdown fraction that counts as ruin, default 0.2
-
-Examples
---------
-    python3 cli.py report data/DEXUSEU_returns.csv --col return
-    python3 cli.py var    data/DEXUSEU_returns.csv --col return --alpha 0.01
-    python3 cli.py ruin   data/DEXUSEU_returns.csv --col return --threshold 0.3
-    python3 cli.py simulate data/DEXUSEU_returns.csv --col return --dist t --df 5
-"""
-
 import argparse
 import csv
 import sys

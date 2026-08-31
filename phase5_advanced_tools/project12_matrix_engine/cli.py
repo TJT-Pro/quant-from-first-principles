@@ -1,22 +1,3 @@
-"""Command-line interface for the matrix engine.
-
-Usage
------
-    python3 cli.py matmul   --A "[[1,2],[3,4]]" --B "[[5,6],[7,8]]"
-    python3 cli.py solve    --A "[[2,1],[5,7]]" --b "[11,13]"
-    python3 cli.py inverse  --A "[[4,7],[2,6]]"
-    python3 cli.py det      --A "[[1,2],[3,4]]"
-    python3 cli.py lu       --A "[[2,1],[1,3]]"
-    python3 cli.py qr       --A "[[1,2],[3,4],[5,6]]"
-    python3 cli.py lstsq    --A "[[1,0],[1,1],[1,2]]" --b "[1,2,4]"
-    python3 cli.py eigen    --A "[[2,1],[1,2]]"
-    python3 cli.py power    --A "[[2,1],[1,2]]"
-    python3 cli.py cond     --A "[[2,0],[0,1]]"
-    python3 cli.py verify
-
-Matrices are given as JSON-like nested lists.
-"""
-
 import argparse
 import ast
 import math
