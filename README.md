@@ -1,7 +1,7 @@
 # math-implementations
 
 Fourteen Python projects, one per mathematical topic, built in sequence
-from a Mathematics Mastery Roadmap. Every concept is implemented from
+from a Mathematics Mastery Roadmap, a plan I was using during my study. Every concept is implemented from
 its definition -- numpy and scipy appear only as independent verification
 oracles, never inside the implementations themselves.
 
