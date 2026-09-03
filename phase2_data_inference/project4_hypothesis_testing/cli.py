@@ -1,3 +1,4 @@
+"""Command-line front end for the Hypothesis Testing engine."""
 import argparse
 import csv
 import math

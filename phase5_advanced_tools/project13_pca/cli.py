@@ -1,3 +1,4 @@
+"""Command-line front end for PCA from scratch."""
 import argparse
 import math
 import os

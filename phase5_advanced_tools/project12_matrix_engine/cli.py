@@ -1,3 +1,4 @@
+"""Command-line front end for the Matrix Engine."""
 import argparse
 import ast
 import math

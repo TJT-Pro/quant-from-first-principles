@@ -1,3 +1,4 @@
+"""Command-line front end for the Expected Value & Decision Theory engine."""
 import argparse
 import csv
 import sys

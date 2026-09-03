@@ -1,3 +1,4 @@
+"""Command-line front end for the Numerical Differentiation engine."""
 import argparse
 import math
 import sys

@@ -1,3 +1,4 @@
+"""Command-line front end for the Gradient Field visualiser."""
 import argparse
 import math
 import sys

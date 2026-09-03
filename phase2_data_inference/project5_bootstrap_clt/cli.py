@@ -1,3 +1,4 @@
+"""Command-line front end for the Bootstrap Sampler & CLT demonstrator."""
 import argparse
 import csv
 import math

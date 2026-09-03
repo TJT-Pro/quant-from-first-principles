@@ -1,3 +1,4 @@
+"""Command-line front end for the Gradient Descent Optimizer & LP Solver."""
 import argparse
 import ast
 import math

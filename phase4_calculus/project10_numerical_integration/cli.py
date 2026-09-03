@@ -1,3 +1,4 @@
+"""Command-line front end for the Numerical Integrator & Taylor Series expander."""
 import argparse
 import math
 import sys

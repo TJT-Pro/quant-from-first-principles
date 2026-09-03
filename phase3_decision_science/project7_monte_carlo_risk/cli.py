@@ -1,3 +1,4 @@
+"""Command-line front end for the Monte Carlo Risk & Drawdown analyser."""
 import argparse
 import csv
 import sys

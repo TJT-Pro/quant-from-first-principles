@@ -1,3 +1,4 @@
+"""Command-line front end for the Strategy Backtester."""
 import argparse
 import csv
 import sys
