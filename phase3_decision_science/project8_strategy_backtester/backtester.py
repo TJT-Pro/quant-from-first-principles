@@ -227,7 +227,7 @@ def sharpe_ratio(returns, risk_free=0.0, periods_per_year=252):
     excess = [r - risk_free for r in returns]
     mu = _mean(excess)
     sigma = _std_sample(excess)
-    if sigma == 0.0:
+    if sigma < 1e-12:
         return None
     return (mu / sigma) * math.sqrt(periods_per_year)
 
@@ -259,7 +259,7 @@ def sortino_ratio(returns, risk_free=0.0, periods_per_year=252):
         downside_std = math.sqrt(
             sum(d ** 2 for d in downside) / len(downside)
         )
-    if downside_std == 0.0:
+    if downside_std < 1e-12:
         return None
     return (excess_mean / downside_std) * math.sqrt(periods_per_year)
 
@@ -423,7 +423,7 @@ def t_test_one_sample(returns, mu0=0.0):
     n    = len(returns)
     xbar = _mean(returns)
     s    = _std_sample(returns)
-    if s == 0.0:
+    if s < 1e-12:
         raise ValueError(
             "all returns are identical; the t-test is undefined"
         )
@@ -750,7 +750,7 @@ def simulate_mean_reversion(returns, lookback=20, z_threshold=1.5):
         window = returns[i - lookback + 1: i + 1]
         mu  = sum(window) / len(window)
         s   = math.sqrt(sum((x - mu) ** 2 for x in window) / (len(window) - 1))
-        if s == 0.0:
+        if s < 1e-12:
             continue
         z = (returns[i] - mu) / s
         if z < -z_threshold:

@@ -305,7 +305,7 @@ def t_test_one_sample(data, mu0=0.0, alternative="two-sided"):
         raise ValueError("need at least two observations")
     m = _mean(data)
     s = _sample_stddev(data)
-    if s == 0.0:
+    if s < 1e-12:
         if m == mu0:
             return {"t": 0.0, "df": n - 1, "p": 1.0}
         if m > mu0:
@@ -333,7 +333,7 @@ def t_test_two_sample(a, b, equal_var=False, alternative="two-sided"):
         raise ValueError("each group needs at least two observations")
     m1, m2 = _mean(a), _mean(b)
     s1, s2 = _sample_stddev(a), _sample_stddev(b)
-    if s1 == 0.0 and s2 == 0.0:
+    if s1 < 1e-12 and s2 < 1e-12:
         raise ValueError("both groups are constant, the test is undefined")
     if equal_var:
         sp = math.sqrt(((n1 - 1) * s1 * s1 + (n2 - 1) * s2 * s2)
@@ -342,7 +342,7 @@ def t_test_two_sample(a, b, equal_var=False, alternative="two-sided"):
         df = n1 + n2 - 2
     else:
         se = math.sqrt(s1 * s1 / n1 + s2 * s2 / n2)
-        if se == 0.0:
+        if se < 1e-12:
             raise ValueError("both groups are constant, the test is undefined")
         t = (m1 - m2) / se
         num = (s1 * s1 / n1 + s2 * s2 / n2) ** 2
