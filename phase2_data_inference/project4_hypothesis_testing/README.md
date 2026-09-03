@@ -127,7 +127,13 @@ formulas are checked against the manual calculations.
 - Degenerate data is handled explicitly rather than silently.  A
   constant sample equal to the null mean gives t = 0 and p = 1; a
   constant sample away from it gives p = 0.  Two constant groups make
-  the two-sample test undefined, and that raises an error.
+  the two-sample test undefined, and that raises an error. The
+  "constant" check compares `min(data) == max(data)` directly rather
+  than testing a computed standard deviation against `0.0` -- an
+  earlier version did the latter and passed on Python 3.12 while
+  silently failing on Python 3.11, since the two versions round
+  identical floats differently when summed. Full account in
+  `project8_strategy_backtester`'s README.
 - The Wilson interval replaces the Wald interval for proportions,
   because the Wald interval has poor coverage near 0 and 1.
 - Power calculations are for the known-sigma z test, which is the
