@@ -167,7 +167,7 @@ def jacobi_eigen(C, max_sweeps=100, tolerance=1e-12):
     tolerance  : stop when off-diagonal Frobenius norm < tolerance
     """
     p = len(C)
-    A = mx.copy_matrix(C)      # working copy — will be diagonalised
+    A = mx.copy_matrix(C)      # working copy, will be diagonalised
     V = mx.identity(p)         # accumulates rotation product
 
     for _ in range(max_sweeps):

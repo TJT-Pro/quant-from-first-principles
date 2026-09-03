@@ -1,4 +1,4 @@
-# Project 12 — Matrix Engine from Scratch
+# Project 12: Matrix Engine from Scratch
 
 A complete linear algebra library built from Python lists and arithmetic.
 No numpy, no scipy, no external linear algebra libraries.
@@ -23,46 +23,46 @@ schoolbook), `matvec`.
 `trace` (sum of diagonal), `frobenius_norm` (√(sum of squares)).
 
 ### Determinant
-`determinant` — cofactor expansion, exact, O(n!), practical for n ≤ 6.
-`det_lu` — via LU decomposition, O(n³), numerically stable.
+`determinant`: cofactor expansion, exact, O(n!), practical for n ≤ 6.
+`det_lu`: via LU decomposition, O(n³), numerically stable.
 
 ### LU decomposition  `PA = LU`
-`lu_decompose` — Doolittle's algorithm with partial pivoting (largest
+`lu_decompose`: Doolittle's algorithm with partial pivoting (largest
 pivot in column).  Returns L (unit lower triangular), U (upper
 triangular), P (permutation matrix), and n_swaps (row swap count used
 for determinant sign).
 
-`forward_substitution(L, b)` — solve Lx = b in O(n²).  
-`back_substitution(U, b)` — solve Ux = b in O(n²).  
-`solve(A, b)` — solves Ax = b via LU: PA = LU → Ly = Pb → Ux = y.
+`forward_substitution(L, b)`: solve Lx = b in O(n²).  
+`back_substitution(U, b)`: solve Ux = b in O(n²).  
+`solve(A, b)`: solves Ax = b via LU: PA = LU → Ly = Pb → Ux = y.
 
 ### Matrix inverse
-`inverse(A)` — solves Ax = eᵢ for each basis vector, assembles columns.
+`inverse(A)`: solves Ax = eᵢ for each basis vector, assembles columns.
 O(n³).
 
 ### Eigenvalues
-`eigenvalues_2x2` — closed-form via the quadratic formula.  Returns
+`eigenvalues_2x2`: closed-form via the quadratic formula.  Returns
 real floats or complex (real, imag) tuples.
 
-`power_iteration` — dominant eigenpair of a symmetric matrix.  Uses a
+`power_iteration`: dominant eigenpair of a symmetric matrix.  Uses a
 deterministic LCG for the initial vector.  Converges geometrically at
 rate |λ₂/λ₁|.
 
 ### QR decomposition  `A = QR`
-`qr_decompose` — modified Gram-Schmidt orthogonalisation.  More stable
+`qr_decompose`: modified Gram-Schmidt orthogonalisation.  More stable
 than classical Gram-Schmidt because it re-orthogonalises each column
 against already-computed basis vectors rather than against the
 originals.  Returns Q (m×n, orthonormal columns) and R (n×n, upper
 triangular).
 
 ### Least squares
-`least_squares(A, b)` — minimises ||Ax − b||₂ via QR decomposition.
+`least_squares(A, b)`: minimises ||Ax − b||₂ via QR decomposition.
 Solves the reduced system Rx = Qᵀb by back substitution.
 
-`residual_norm(A, b, x)` — ||Ax − b||₂.
+`residual_norm(A, b, x)`: ||Ax − b||₂.
 
 ### Condition number
-`condition_number(A)` — approximates κ₂(A) = σ_max/σ_min via power
+`condition_number(A)`: approximates κ₂(A) = σ_max/σ_min via power
 iteration on AᵀA.  Uses deflation to estimate the second-largest
 eigenvalue.
 

@@ -1,4 +1,4 @@
-# Project 14 — Gradient Descent Optimizer & LP Solver
+# Project 14: Gradient Descent Optimizer & LP Solver
 
 Unconstrained optimisation algorithms and a linear programming simplex
 solver, built from scratch.  No numpy, no scipy, no cvxpy.
@@ -60,13 +60,13 @@ more robust than a fixed learning rate on steep or ill-scaled problems.
 
 Maintains n+1 vertices in n-dimensional space and iteratively reflects,
 expands, contracts, and shrinks the simplex toward the minimum.  No
-gradient required — works on non-smooth or black-box functions.
+gradient required: works on non-smooth or black-box functions.
 
 ---
 
-## LP solver — revised simplex
+## LP solver: revised simplex
 
-`lp_simplex(c, A, b, max_iter)` — solves the standard form LP:
+`lp_simplex(c, A, b, max_iter)`: solves the standard form LP:
 
     min cᵀx   subject to  Ax ≤ b,  x ≥ 0
 

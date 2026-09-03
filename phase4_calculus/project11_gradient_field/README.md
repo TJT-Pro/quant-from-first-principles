@@ -1,4 +1,4 @@
-# Project 11 — Gradient Field Visualiser & Partial Derivative Engine
+# Project 11: Gradient Field Visualiser & Partial Derivative Engine
 
 Multivariable calculus implemented from scratch: partial derivatives,
 gradients, Hessians, Laplacians, gradient descent with trajectory
@@ -72,9 +72,9 @@ Evaluates ∇f at every point of a 2D grid, returning gx, gy, and
 ||∇f|| arrays ready for quiver-plot rendering or analysis.
 
 ### Vector field operations
-- **Divergence**: ∇·F = ∂Fx/∂x + ∂Fy/∂y — measures local source/sink
+- **Divergence**: ∇·F = ∂Fx/∂x + ∂Fy/∂y: measures local source/sink
   strength.  Zero for incompressible (divergence-free) fields.
-- **Scalar curl**: (∇×F)_z = ∂Fy/∂x − ∂Fx/∂y — measures local
+- **Scalar curl**: (∇×F)_z = ∂Fy/∂x − ∂Fx/∂y: measures local
   rotation.  Zero for irrotational (conservative) fields, which are
   exactly the gradient fields of scalar potentials.
 

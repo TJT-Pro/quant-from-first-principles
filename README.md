@@ -1,142 +1,141 @@
-# math-implementations
+# Quant From First Principles
 
-Fourteen Python projects, one per mathematical topic, built in sequence
-from a Mathematics Mastery Roadmap, a plan I drafted to aid guide my study. Every concept is implemented from
-its definition -- numpy and scipy appear only as independent verification
-oracles, never inside the implementations themselves.
+Thirty mathematical systems, implemented from their definitions, in Python,
+with no NumPy or SciPy inside the implementations themselves. Those libraries
+appear only as independent oracles used to verify the code is right.
 
-## Repository layout
+![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
+![License: MIT](https://img.shields.io/badge/license-MIT-green)
+![Tests](https://img.shields.io/badge/tests-2%2C247%20passing-brightgreen)
+
+## Why this exists
+
+Most quantitative and data-science code hides its mathematics behind NumPy,
+SciPy, and statsmodels. That's the right call in production. It's the wrong
+call if the goal is to actually understand what those libraries are doing
+underneath the API.
+
+This is a personal mathematics curriculum built the other way around: derive
+the mathematics, implement it from the definition, verify it against the
+library everyone else just calls directly, then apply it to a single real
+dataset that runs through almost every project — daily EUR/USD exchange
+rates from the Federal Reserve (FRED series `DEXUSEU`), 1999-01-04 to
+2026-08-21, 6,930 observations.
+
+The goal was never to replace NumPy or SciPy. It was to earn the right to
+use them by first understanding what they compute and why it works.
+
+## How everything is verified
+
+Every implementation follows the same pipeline:
+
+```
+mathematical definition  →  from-scratch implementation  →  unit tests
+                                                                  ↓
+                                                         independent oracle
+                                                          (numpy / scipy)
+                                                                  ↓
+                                                            pass / fail
+```
+
+Each project ships a `cli.py verify` command that runs its from-scratch
+output against the equivalent NumPy/SciPy/statsmodels call and reports a
+pass/fail table. Nothing is "verified" by eyeballing a plot.
+
+## Repository structure
+
+This repository holds the foundational curriculum — 14 projects, phase 1
+through 5, discrete math up through PCA and optimization. The 16 more
+advanced projects that build on this foundation (stochastic calculus,
+option pricing, Bayesian inference, and the rest of a working quant toolkit)
+are each their own standalone repository, linked below. They're kept
+separate because each one is a complete, independently useful piece of
+work — a Black-Scholes engine or an automatic differentiation engine
+shouldn't require cloning thirty projects to find.
 
 ```
 phase1_foundations/        Projects 1-2   Discrete Math, Probability
 phase2_data_inference/     Projects 3-5   Statistics, Sampling Theory
 phase3_decision_science/   Projects 6-8   Expected Value, Risk Theory
 phase4_calculus/           Projects 9-11  Differentiation, Integration, Gradients
-phase5_advanced_tools/     Projects 12-14 Linear Algebra, PCA, Optimisation
+phase5_advanced_tools/     Projects 12-14 Linear Algebra, PCA, Optimization
 ```
 
-## Project status
+### Foundations (this repository)
 
-| # | Project | Phase | Tests | Verify |
-|---|---|---|---|---|
-| 1 | Logic & Combinatorics Toolkit | 1 Foundations | 57 | 23 checks |
-| 2 | Probability Simulator & Bayes Engine | 1 Foundations | 37 | 16 checks |
-| 3 | Descriptive Statistics Library | 2 Data & Inference | 55 | 20 checks |
-| 4 | Hypothesis Testing Engine | 2 Data & Inference | 68 | 3729 checks |
-| 5 | Bootstrap Sampler & CLT Demonstrator | 2 Data & Inference | 42 | 19 checks |
-| 6 | Expected Value & Decision Theory | 3 Decision Science | 52 | 34 checks |
-| 7 | Monte Carlo Risk & Drawdown Analyser | 3 Decision Science | 88 | 31 checks |
-| 8 | Strategy Backtester | 3 Decision Science | 100 | 19 checks |
-| 9 | Numerical Differentiation Engine | 4 Calculus | 84 | 44 checks |
-| 10 | Numerical Integrator & Taylor Series | 4 Calculus | 111 | 53 checks |
-| 11 | Gradient Field Visualiser | 4 Calculus | 70 | 27 checks |
-| 12 | Matrix Engine from Scratch | 5 Advanced Tools | 71 | 21 checks |
-| 13 | PCA from Scratch | 5 Advanced Tools | 42 | 18 checks |
-| 14 | Gradient Descent Optimizer & LP Solver | 5 Advanced Tools | 36 | 23 checks |
+| # | Project | Core mathematics | Tests |
+|---|---|---|---|
+| 1 | [Logic & Combinatorics Toolkit](phase1_foundations/project1_logic_combinatorics) | Propositional logic, proof rules, set theory, combinatorics | 57 |
+| 2 | [Probability Simulator & Bayes Engine](phase1_foundations/project2_probability) | Discrete/continuous distributions, Bayes' theorem | 37 |
+| 3 | [Descriptive Statistics Library](phase2_data_inference/project3_statistics) | Moments, quantiles, skewness/kurtosis | 55 |
+| 4 | [Hypothesis Testing Engine](phase2_data_inference/project4_hypothesis_testing) | t-tests, chi-square, ANOVA, power analysis | 68 |
+| 5 | [Bootstrap Sampler & CLT Demonstrator](phase2_data_inference/project5_bootstrap_clt) | Resampling, confidence intervals, CLT | 42 |
+| 6 | [Expected Value & Decision Theory](phase3_decision_science/project6_expected_value) | Utility theory, the Kelly criterion | 52 |
+| 7 | [Monte Carlo Risk & Drawdown Analyser](phase3_decision_science/project7_monte_carlo_risk) | Monte Carlo simulation, VaR/CVaR | 88 |
+| 8 | [Strategy Backtester](phase3_decision_science/project8_strategy_backtester) | Sharpe/Sortino/Calmar, permutation testing for edge | 100 |
+| 9 | [Numerical Differentiation Engine](phase4_calculus/project9_numerical_differentiation) | Finite differences, Richardson extrapolation | 84 |
+| 10 | [Numerical Integrator & Taylor Series Expander](phase4_calculus/project10_numerical_integration) | Quadrature rules, Taylor series | 111 |
+| 11 | [Gradient Field Visualiser](phase4_calculus/project11_gradient_field) | Partial derivatives, divergence, curl | 70 |
+| 12 | [Matrix Engine from Scratch](phase5_advanced_tools/project12_matrix_engine) | LU, QR, least squares, eigenvalues, condition numbers | 71 |
+| 13 | [PCA from Scratch](phase5_advanced_tools/project13_pca) | Jacobi eigenvalue algorithm, PCA | 42 |
+| 14 | [Gradient Descent Optimizer & LP Solver](phase5_advanced_tools/project14_optimizer) | Adam, RMSProp, Nelder-Mead, simplex LP | 36 |
 
-**913 tests passing across all 14 projects.**
+**913 tests, 14 projects.**
+
+### Quant engine (standalone repositories)
+
+Built in this order, each repository self-contained with its own README,
+tests, and `cli.py verify` command.
+
+| # | Project | Core mathematics | Tests |
+|---|---|---|---|
+| 15 | [stochastic-processes](https://github.com/TJT-Pro/stochastic-processes) | Random walks, Markov chains, Poisson processes, Brownian motion, martingales, first-passage times | 285 |
+| 16 | [black-scholes](https://github.com/TJT-Pro/black-scholes) | Closed-form pricing, Greeks, implied volatility, binomial trees, Monte Carlo pricing | 84 |
+| 17 | [automatic-differentiation](https://github.com/TJT-Pro/automatic-differentiation) | Dual numbers, forward mode, reverse-mode autodiff, backpropagation | 70 |
+| 18 | [time-series-mathematics](https://github.com/TJT-Pro/time-series-mathematics) | ACF/PACF, AR/MA/ARMA, Yule-Walker, ADF stationarity testing | 105 |
+| 19 | [bayesian-inference](https://github.com/TJT-Pro/bayesian-inference) | Conjugate priors, grid approximation, Metropolis-Hastings MCMC | 76 |
+| 20 | [ode-engine](https://github.com/TJT-Pro/ode-engine) | Euler methods, RK4, adaptive step-doubling | 45 |
+| 21 | [fourier-analysis](https://github.com/TJT-Pro/fourier-analysis) | DFT, Cooley-Tukey FFT, convolution, periodograms | 58 |
+| 22 | [svd-from-scratch](https://github.com/TJT-Pro/svd-from-scratch) | Singular value decomposition, pseudoinverse, condition numbers | 60 |
+| 23 | [convex-optimization](https://github.com/TJT-Pro/convex-optimization) | Newton's method, projected gradient descent, KKT/duality | 92 |
+| 24 | [stochastic-differential-equations](https://github.com/TJT-Pro/stochastic-differential-equations) | Euler-Maruyama, Milstein scheme, Ito's lemma | 55 |
+| 25 | [numerical-pde](https://github.com/TJT-Pro/numerical-pde) | Finite differences, von Neumann stability, Black-Scholes PDE | 66 |
+| 26 | [hidden-markov-models](https://github.com/TJT-Pro/hidden-markov-models) | Forward-backward algorithm, Viterbi, Baum-Welch | 45 |
+| 27 | [information-theory](https://github.com/TJT-Pro/information-theory) | Entropy, KL divergence, mutual information, Huffman coding | 97 |
+| 28 | [quasi-monte-carlo](https://github.com/TJT-Pro/quasi-monte-carlo) | Van der Corput and Halton sequences, discrepancy measures | 56 |
+| 29 | [portfolio-mathematics](https://github.com/TJT-Pro/portfolio-mathematics) | Markowitz frontier, CAPM, Kelly criterion | 76 |
+| 30 | [model-risk](https://github.com/TJT-Pro/model-risk) | VaR backtesting, AIC/BIC, backtest overfitting demonstration | 64 |
+
+**1,334 tests, 16 repositories.**
+
+**2,247 tests, 30 projects, one dataset.**
 
 ## Setup
 
-Python 3.11+. Each project's core needs only the standard library. The
-`verify` command in every project uses numpy/scipy as independent oracles:
+Each project is self-contained: standard library only for the
+implementation, `pytest` for the test suite, `numpy`/`scipy` only inside
+`cli.py verify`.
 
 ```bash
-pip install numpy scipy matplotlib
+cd phase1_foundations/project1_logic_combinatorics
+python3 -m pytest
+python3 cli.py verify
 ```
 
-## Running all tests
+## What "from scratch" means, and doesn't
 
-From the repo root:
+Every core implementation is pure Python: no NumPy, SciPy, pandas, or
+scikit-learn calls inside the mathematics itself. `numpy` and `scipy`
+appear in exactly two places per project: the `cli.py verify` command,
+and the test files that check the implementation against them. That
+distinction is enforced, not just claimed — every core module can be
+grepped for library imports and none will turn up.
 
-```bash
-python3 -m pytest phase1_foundations/ phase2_data_inference/ \
-                  phase3_decision_science/ phase4_calculus/ \
-                  phase5_advanced_tools/
-```
+This is not a performance library. The matrix engine's determinant is
+O(n!) by cofactor expansion for small matrices; NumPy's is not. Where an
+implementation has a known limitation, it's stated in that project's
+README rather than glossed over.
 
-Or one project at a time, e.g.:
+## License
 
-```bash
-python3 -m pytest phase5_advanced_tools/project14_optimizer/test_optimizer.py -v
-```
-
-## Running the oracles
-
-Every project ships a `verify` command that cross-checks the hand-built
-code against numpy/scipy. Run from inside the project folder:
-
-```bash
-cd phase1_foundations/project1_logic_combinatorics  && python3 cli.py verify
-cd phase1_foundations/project2_probability           && python3 cli.py verify
-cd phase2_data_inference/project3_statistics         && python3 cli.py verify
-cd phase2_data_inference/project4_hypothesis_testing && python3 cli.py verify
-cd phase2_data_inference/project5_bootstrap_clt      && python3 cli.py verify
-cd phase3_decision_science/project6_expected_value   && python3 cli.py verify
-cd phase3_decision_science/project7_monte_carlo_risk && python3 cli.py verify
-cd phase3_decision_science/project8_strategy_backtester && python3 cli.py verify
-cd phase4_calculus/project9_numerical_differentiation && python3 cli.py verify
-cd phase4_calculus/project10_numerical_integration   && python3 cli.py verify
-cd phase4_calculus/project11_gradient_field          && python3 cli.py verify
-cd phase5_advanced_tools/project12_matrix_engine     && python3 cli.py verify
-cd phase5_advanced_tools/project13_pca               && python3 cli.py verify
-cd phase5_advanced_tools/project14_optimizer         && python3 cli.py verify
-```
-
-## The data
-
-Projects 3 through 14 use the same real dataset: daily EUR/USD exchange
-rates from the Federal Reserve (FRED series DEXUSEU), from 1999-01-04
-to 2026-08-21, giving 6930 daily returns. The CSV lives in each
-project's `data/` folder. No external fetch is needed to run any test.
-
-## Design rules
-
-- **No hardcoded values.** Every number in output is computed from the
-  data or from the formula.
-- **Standard library only in implementations.** numpy, scipy, and
-  matplotlib are for checking and plotting, never for the core logic.
-- **Every formula is verified.** The `verify` command in each project
-  runs the hand-built result against an independent oracle and prints
-  PASS or FAIL per check.
-- **Order is strict.** Each phase builds on the mathematics of the
-  previous one. Phase 5 imports the matrix engine from Phase 5 project
-  12; everything else is self-contained.
-
-## What each phase covers
-
-**Phase 1 - Foundations.** Propositional logic, sets, combinatorics,
-graph traversal, proof validation. Probability from sample spaces through
-Bayes' theorem, all major discrete and continuous distributions, the law
-of large numbers and central limit theorem -- all implemented without
-scipy's distribution functions.
-
-**Phase 2 - Data and Inference.** Descriptive statistics from scratch,
-every hypothesis test built from the distribution CDFs, four styles of
-bootstrap confidence interval, jackknife bias correction, permutation
-tests, and a CLT demonstrator on real EUR/USD return data.
-
-**Phase 3 - Decision Science.** Expected value, all six classical
-decision rules, expected utility with five utility families, prospect
-theory, Kelly criterion. Monte Carlo simulation from Box-Muller through
-VaR, CVaR, drawdown, and ruin probability. Full strategy backtesting
-with t-test edge verification, Sharpe, Sortino, Calmar, bootstrap equity
-curves, and permutation tests.
-
-**Phase 4 - Calculus.** Numerical differentiation by four finite
-difference methods with Richardson extrapolation, error analysis,
-Jacobian and Hessian matrices, product and chain rules verified
-numerically, bond duration and convexity. Numerical integration via
-Riemann, trapezoid, Simpson, Gaussian quadrature, Monte Carlo, and
-adaptive methods. Taylor series expansion and remainder bounds. Gradient
-fields, partial derivatives, directional derivatives, Laplacian, critical
-point classification, gradient descent with trajectory, divergence and
-curl of vector fields.
-
-**Phase 5 - Advanced Tools.** Complete linear algebra engine (LU
-decomposition, QR decomposition, eigenvalues, least squares, condition
-number). PCA from scratch via the Jacobi eigenvalue algorithm applied to
-EUR/USD lag matrices. Gradient descent optimizers (vanilla, momentum,
-RMSProp, Adam, Nelder-Mead, backtracking line search), the revised
-simplex method for linear programming, logistic regression, and portfolio
-optimisation via LP.
+MIT. Use it, fork it, learn from it.

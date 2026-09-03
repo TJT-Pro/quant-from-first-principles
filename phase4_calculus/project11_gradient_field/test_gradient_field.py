@@ -15,17 +15,17 @@ import gradient_field as gf
 # ---------------------------------------------------------------------------
 
 def f_quad(p):
-    """f(x,y) = x² + y²  — bowl with minimum at origin."""
+    """f(x,y) = x² + y², a bowl with minimum at origin."""
     return p[0]**2 + p[1]**2
 
 
 def f_saddle(p):
-    """f(x,y) = x² - y²  — saddle at origin."""
+    """f(x,y) = x² - y², a saddle at origin."""
     return p[0]**2 - p[1]**2
 
 
 def f_rosenbrock(p):
-    """f(x,y) = (1-x)² + 100*(y-x²)²  — classic banana valley."""
+    """f(x,y) = (1-x)² + 100*(y-x²)², the classic banana valley."""
     x, y = p[0], p[1]
     return (1.0 - x)**2 + 100.0 * (y - x**2)**2
 
@@ -36,7 +36,7 @@ def f_sin_cos(p):
 
 
 def f_exp(p):
-    """f(x,y) = exp(-(x²+y²))  — Gaussian bump."""
+    """f(x,y) = exp(-(x²+y²)), a Gaussian bump."""
     return math.exp(-(p[0]**2 + p[1]**2))
 
 

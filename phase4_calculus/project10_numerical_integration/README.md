@@ -1,4 +1,4 @@
-# Project 10 — Numerical Integrator & Taylor Series Expander
+# Project 10: Numerical Integrator & Taylor Series Expander
 
 Numerical integration and Taylor series built entirely from definitions.
 No `scipy.integrate`, no `sympy`, no special-function libraries.
@@ -13,9 +13,9 @@ subinterval determines accuracy:
 
 | Method | Sample point | Accuracy |
 |--------|-------------|----------|
-| Left   | left edge   | O(h) — first-order |
-| Right  | right edge  | O(h) — first-order |
-| Midpoint | centre    | O(h²) — the cancellation of the linear error term gives second-order accuracy for the same cost |
+| Left   | left edge   | O(h): first-order |
+| Right  | right edge  | O(h): first-order |
+| Midpoint | centre    | O(h²): the cancellation of the linear error term gives second-order accuracy for the same cost |
 
 ### Trapezoidal rule
 Connects adjacent function values with straight lines and sums trapezoid
@@ -24,7 +24,7 @@ full period, endpoint errors cancel and it achieves spectral accuracy.
 
 ### Simpson's rule
 Fits a quadratic through each triple of adjacent points and integrates
-it exactly. O(h⁴) — halving n reduces error by a factor of 16. n must
+it exactly. O(h⁴): halving n reduces error by a factor of 16. n must
 be even. The standard method for smooth functions.
 
 Both trapezoidal and Simpson's include `_error_estimate` functions that
@@ -76,16 +76,16 @@ The radius of convergence is estimated via the ratio test on the last
 pair of non-negligible coefficients.
 
 ### Probability applications
-- **Normal CDF** — adaptive numerical integration of the standard normal
+- **Normal CDF**: adaptive numerical integration of the standard normal
   PDF; matches `math.erf` to 8 decimal places
-- **Exponential CDF** — adaptive integration of the exponential PDF
-- **Beta CDF** — Simpson's rule with singular-endpoint handling
+- **Exponential CDF**: adaptive integration of the exponential PDF
+- **Beta CDF**: Simpson's rule with singular-endpoint handling
 
 ### Finance applications
-- **Present value of continuous cash flows** — `∫₀ᵀ c(t) e^{−rt} dt`
-- **Black-Scholes call/put** — full formula using the numerically
+- **Present value of continuous cash flows**: `∫₀ᵀ c(t) e^{−rt} dt`
+- **Black-Scholes call/put**: full formula using the numerically
   computed normal CDF; put-call parity verified
-- **Continuous bond duration** — both the price integral and the
+- **Continuous bond duration**: both the price integral and the
   weighted-time integral computed numerically
 
 ---

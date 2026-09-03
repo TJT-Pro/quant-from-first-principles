@@ -601,7 +601,7 @@ def regression_l1_lp(X, y, lam=0.0):
     lam : L1 regularisation on weights
     """
     n, p = len(X), len(X[0])
-    # variables: w (p), t (n), u (p) — but LP needs x >= 0
+    # variables: w (p), t (n), u (p); LP needs x >= 0
     # Split w = w_pos - w_neg; all LP variables non-negative
     # This adds p more variables but keeps the LP standard
     # Simpler: just solve without the w non-negativity (use t,u only)

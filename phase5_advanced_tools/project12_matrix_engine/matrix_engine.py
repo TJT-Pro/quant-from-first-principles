@@ -200,7 +200,7 @@ def frobenius_norm(A):
 def determinant(A):
     """Determinant of a square matrix by cofactor expansion along row 0.
 
-    Exact for integer matrices.  O(n!) — only practical for n ≤ 6 or so.
+    Exact for integer matrices.  O(n!), only practical for n <= 6 or so.
     For larger matrices use the LU-based version below.
 
     Parameters

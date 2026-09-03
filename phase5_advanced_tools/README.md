@@ -1,4 +1,4 @@
-# Phase 5 — Advanced Tools
+# Phase 5: Advanced Tools
 
 The final phase builds the core machinery of linear algebra, dimensionality
 reduction, and numerical optimisation from scratch.  The three projects form

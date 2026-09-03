@@ -1,4 +1,4 @@
-# Project 13 — PCA from Scratch
+# Project 13: PCA from Scratch
 
 Principal Component Analysis implemented from its mathematical definition.
 No numpy, no scipy, no sklearn.  Builds on the matrix engine from Project 12.
@@ -12,17 +12,17 @@ No numpy, no scipy, no sklearn.  Builds on the matrix engine from Project 12.
 `standardise` (zero mean, unit variance per column).
 
 ### Covariance matrix
-`covariance_matrix(X)` — computes XᵀX / (n−1) for a centred n×p matrix.
+`covariance_matrix(X)`: computes XᵀX / (n−1) for a centred n×p matrix.
 
 ### Jacobi eigenvalue algorithm
-`jacobi_eigen(C)` — exact eigenvalues and eigenvectors of any real symmetric
+`jacobi_eigen(C)`: exact eigenvalues and eigenvectors of any real symmetric
 matrix via iterated Givens rotations.  Each rotation zeros one off-diagonal
 pair; sweeps continue until the off-diagonal Frobenius norm falls below
 tolerance.  Returns sorted (descending) eigenvalues and the orthonormal
 eigenvector matrix V such that CV = VΛ.
 
 ### Full PCA pipeline
-`pca(X, n_components, standardise_data)` — one-call entry point:
+`pca(X, n_components, standardise_data)`: one-call entry point:
 1. Centre (or standardise) the data
 2. Compute the covariance (or correlation) matrix
 3. Run Jacobi to get eigenpairs
@@ -33,22 +33,22 @@ Returns components, eigenvalues, explained variance ratios, cumulative
 ratios, scores, means, stds.
 
 ### Reconstruction
-`reconstruct(result, n_components)` — maps scores back to the original
+`reconstruct(result, n_components)`: maps scores back to the original
 feature space: X_hat = scores[:, :k] @ V[:, :k]ᵀ + means.
 
-`reconstruction_error(X, result, n_components)` — mean squared error
+`reconstruction_error(X, result, n_components)`: mean squared error
 between the original and reconstructed data.
 
 ### Whitening
-`whitened_scores(result)` — divides each score column by √eigenvalue,
+`whitened_scores(result)`: divides each score column by √eigenvalue,
 giving identity covariance in component space.
 
 ### Variance threshold
-`n_components_for_variance(result, threshold)` — minimum k such that
+`n_components_for_variance(result, threshold)`: minimum k such that
 cumulative explained variance ≥ threshold.
 
 ### Lag matrix (time series feature engineering)
-`lag_matrix(series, n_lags)` — builds an n×p matrix from a 1D time
+`lag_matrix(series, n_lags)`: builds an n×p matrix from a 1D time
 series where each row contains the current value and n_lags−1 previous
 values.  Used to apply PCA to the EUR/USD return series.
 
