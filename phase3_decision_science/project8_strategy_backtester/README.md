@@ -101,7 +101,7 @@ flat otherwise. Trade return is the next period's return.
 z_threshold standard deviations below the rolling mean. Expects a
 bounce.
 
-Running both on EUR/USD daily returns (1999-2024, 6,930 observations):
+Running both on EUR/USD daily returns (1999-2026, 6,930 observations):
 
 | | MA crossover (10/30) | Mean reversion (z=1.5) |
 |---|---|---|

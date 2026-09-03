@@ -49,7 +49,7 @@ mean reversion) to generate trade logs from a raw return series.
 ## The data
 
 All three projects use `data/DEXUSEU_returns.csv`, the daily EUR/USD
-return series from FRED (6930 observations, 1999-2024). It is committed
+return series from FRED (6930 observations, 1999-2026). It is committed
 to each project's folder.
 
 ## Running
