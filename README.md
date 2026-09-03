@@ -4,6 +4,11 @@ Thirty mathematical systems, implemented from their definitions, in Python,
 with no NumPy or SciPy inside the implementations themselves. Those libraries
 appear only as independent oracles used to verify the code is right.
 
+This repository holds 14 of the 30 -- the foundational curriculum. The
+other 16, built on top of this foundation, are published as their own
+repositories; see the full collection at
+[github.com/TJT-Pro](https://github.com/TJT-Pro).
+
 ![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 ![Tests](https://img.shields.io/badge/tests-2%2C247%20passing-brightgreen)
@@ -220,4 +225,4 @@ MIT. Use it, fork it, learn from it.
 
 ## Contact
 
-Trading, tools, and social: [TJT_Pro on TradingView](https://www.tradingview.com/u/TJT_Pro/)
+Trading, tools, socials: [TJT_Pro on TradingView](https://www.tradingview.com/u/TJT_Pro/)
