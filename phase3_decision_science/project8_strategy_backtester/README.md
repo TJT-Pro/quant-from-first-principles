@@ -162,6 +162,46 @@ python3 -m pytest test_backtester.py -v
 100 tests. Every formula is checked against a hand-computed value or a
 known identity. Fixed seeds make Monte Carlo tests deterministic.
 
+## A bug this project's CI caught: exact-zero float comparisons
+
+Several functions here need to detect a degenerate case: a t-test on
+returns that are all the same value, a Sharpe ratio on a return series
+with no variance, a rolling window where every entry is identical. The
+natural way to write that check is to compute the sample standard
+deviation and ask `if s == 0.0`.
+
+That check passed every test locally under Python 3.12 and failed on
+Python 3.11 in CI, on `test_significant_positive_mean`: fifty identical
+returns of `0.05`, standard deviation should be exactly zero, and the
+test expected a `ValueError`. Python 3.12 changed how the built-in
+`sum()` accumulates floats, switching to a more numerically accurate
+algorithm than the plain left-to-right addition every earlier version
+uses. Summing fifty copies of `0.05` and dividing back by fifty
+reproduces `0.05` exactly under 3.12's summation, so every deviation
+from the mean is exactly `0.0` and the variance is exactly `0.0`. Under
+3.11's summation, the same computation leaves a rounding residue on the
+order of `1e-17`, which is enough for `s == 0.0` to be `False` when it
+should have been `True`.
+
+The first fix was to loosen the check to `s < 1e-12`, on the theory
+that the residue was small and version-specific. That was still the
+wrong question. `s < 1e-12` depends on how `s` was computed, which
+depends on the Python version, which is exactly the thing that should
+not matter. The actual fix asks a different, sum-free question: `if
+min(values) == max(values)`. If the minimum and maximum of a list are
+equal, every value in it is equal, by definition, with no summation
+and no accumulated rounding involved anywhere in the answer.
+
+Once this pattern was identified here, the same exact-zero check
+turned up in three more places in this file (the Sharpe ratio, the
+mean-reversion trade generator) and, on a sweep of the other thirteen
+projects in this repository, in `project3_statistics` (skewness,
+kurtosis, correlation) and `project4_hypothesis_testing` (both
+t-tests). All were fixed the same way. None of the failures were
+visible without CI actually running the suite on more than one Python
+version — a lesson this project's own CI matrix now exists to keep
+teaching automatically on every future push.
+
 ## Using your own trade log
 
 Supply a CSV where one column holds the per-trade return as a decimal
