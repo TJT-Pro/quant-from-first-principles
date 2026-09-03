@@ -127,3 +127,10 @@ returns vs their lag), and the mode conventions.
   the module are math and the csv/stdlib used by the CLI.
 - Skewness and kurtosis follow the scipy conventions so the biased and
   unbiased versions can be compared directly.
+- The zero-variance guards in `skewness`, `kurtosis`, and `correlation`
+  check `min(values) == max(values)` rather than testing a computed
+  variance against `0.0`. An earlier version used the latter and passed
+  on Python 3.12 but silently failed on Python 3.11, because the two
+  versions' `sum()` round identical floating-point values differently.
+  Full account of how this was found in `project8_strategy_backtester`'s
+  README.
