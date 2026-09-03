@@ -1,0 +1,34 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install test dependencies
+        run: pip install pytest numpy scipy
+
+      - name: Run test suite
+        run: python -m pytest --tb=short -q
+
+      - name: Run oracle verification for every project
+        run: |
+          set -e
+          for f in $(find . -name "cli.py" | sort); do
+            d=$(dirname "$f")
+            echo "== $d =="
+            (cd "$d" && python cli.py verify)
+          done
