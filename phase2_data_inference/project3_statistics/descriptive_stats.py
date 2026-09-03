@@ -114,9 +114,9 @@ def skewness(data, bias=True):
     n = len(values)
     if bias is False and n < 3:
         raise ValueError("sample skewness needs at least three values")
-    m2 = _central_moment(values, 2)
-    if m2 < 1e-24:
+    if min(values) == max(values):
         raise ValueError("data has zero variance; skewness is undefined")
+    m2 = _central_moment(values, 2)
     m3 = _central_moment(values, 3)
     g1 = m3 / m2 ** 1.5
     if bias:
@@ -139,9 +139,9 @@ def kurtosis(data, bias=True, fisher=True):
     n = len(values)
     if bias is False and n < 4:
         raise ValueError("sample kurtosis needs at least four values")
-    m2 = _central_moment(values, 2)
-    if m2 < 1e-24:
+    if min(values) == max(values):
         raise ValueError("data has zero variance; kurtosis is undefined")
+    m2 = _central_moment(values, 2)
     m4 = _central_moment(values, 4)
     if bias:
         val = m4 / m2 ** 2 - 3.0
@@ -188,14 +188,14 @@ def pearson_correlation(x, y):
     """
     a, b = _joint_pairs(x, y)
     n = len(a)
+    if min(a) == max(a) or min(b) == max(b):
+        raise ValueError("correlation is undefined when a series is constant")
     ma = sum(a) / n
     mb = sum(b) / n
     dx = [u - ma for u in a]
     dy = [v - mb for v in b]
     ssx = sum(d * d for d in dx)
     ssy = sum(d * d for d in dy)
-    if ssx < 1e-24 or ssy < 1e-24:
-        raise ValueError("correlation is undefined when a series is constant")
     return sum(u * v for u, v in zip(dx, dy)) / math.sqrt(ssx * ssy)
 
 
