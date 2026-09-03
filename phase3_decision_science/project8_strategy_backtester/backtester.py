@@ -225,10 +225,10 @@ def sharpe_ratio(returns, risk_free=0.0, periods_per_year=252):
     if len(returns) < 2:
         raise ValueError("need at least two returns for Sharpe ratio")
     excess = [r - risk_free for r in returns]
+    if min(excess) == max(excess):
+        return None
     mu = _mean(excess)
     sigma = _std_sample(excess)
-    if sigma < 1e-12:
-        return None
     return (mu / sigma) * math.sqrt(periods_per_year)
 
 
@@ -259,7 +259,7 @@ def sortino_ratio(returns, risk_free=0.0, periods_per_year=252):
         downside_std = math.sqrt(
             sum(d ** 2 for d in downside) / len(downside)
         )
-    if downside_std < 1e-12:
+    if downside_std == 0.0:
         return None
     return (excess_mean / downside_std) * math.sqrt(periods_per_year)
 
@@ -422,11 +422,11 @@ def t_test_one_sample(returns, mu0=0.0):
         raise ValueError("need at least two returns for a t-test")
     n    = len(returns)
     xbar = _mean(returns)
-    s    = _std_sample(returns)
-    if s < 1e-12:
+    if min(returns) == max(returns):
         raise ValueError(
             "all returns are identical; the t-test is undefined"
         )
+    s    = _std_sample(returns)
     t_stat = (xbar - mu0) / (s / math.sqrt(n))
     df     = n - 1
     # two-sided p-value
@@ -748,10 +748,10 @@ def simulate_mean_reversion(returns, lookback=20, z_threshold=1.5):
     trades = []
     for i in range(lookback - 1, len(returns) - 1):
         window = returns[i - lookback + 1: i + 1]
+        if min(window) == max(window):
+            continue
         mu  = sum(window) / len(window)
         s   = math.sqrt(sum((x - mu) ** 2 for x in window) / (len(window) - 1))
-        if s < 1e-12:
-            continue
         z = (returns[i] - mu) / s
         if z < -z_threshold:
             trades.append({
