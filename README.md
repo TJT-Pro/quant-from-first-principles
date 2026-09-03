@@ -217,3 +217,7 @@ README rather than glossed over.
 ## License
 
 MIT. Use it, fork it, learn from it.
+
+## Contact
+
+Trading, tools, and social: [TJT_Pro on TradingView](https://www.tradingview.com/u/TJT_Pro/)
