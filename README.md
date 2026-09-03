@@ -53,12 +53,35 @@ separate because each one is a complete, independently useful piece of
 work — a Black-Scholes engine or an automatic differentiation engine
 shouldn't require cloning thirty projects to find.
 
+The five phases below follow the order things were actually learned in,
+not a strict prerequisite chain. Decision science comes before formal
+calculus because that's the order curiosity took, not because expected
+value depends on derivatives.
+
 ```
 phase1_foundations/        Projects 1-2   Discrete Math, Probability
+                            Nothing else here is possible without these two.
+
 phase2_data_inference/     Projects 3-5   Statistics, Sampling Theory
+                            Once you can reason about chance, the next
+                            question is what a batch of real data lets
+                            you conclude from it.
+
 phase3_decision_science/   Projects 6-8   Expected Value, Risk Theory
+                            Applying probability and inference directly to
+                            decisions, risk, and whether a trading edge is
+                            statistically real -- ahead of calculus, because
+                            this is what the data-inference phase led to.
+
 phase4_calculus/           Projects 9-11  Differentiation, Integration, Gradients
+                            The continuous-math machinery most of what
+                            surrounds it quietly assumes.
+
 phase5_advanced_tools/     Projects 12-14 Linear Algebra, PCA, Optimization
+                            Linear algebra as the engine underneath PCA,
+                            optimization as the engine underneath modern
+                            machine learning -- the natural place to end
+                            the foundational curriculum.
 ```
 
 ### Foundations (this repository)
@@ -84,29 +107,84 @@ phase5_advanced_tools/     Projects 12-14 Linear Algebra, PCA, Optimization
 
 ### Quant engine (standalone repositories)
 
-Built in this order, each repository self-contained with its own README,
-tests, and `cli.py verify` command.
+Sixteen more advanced projects, grouped below by mathematical family
+rather than by build order, since that's how they're actually related to
+each other. Each is a complete, independent repository with its own
+README, tests, and `cli.py verify` command. Publishing is in progress in
+the sequence given in "Build order" below; a link that 404s just means
+that repository hasn't gone up yet.
+
+**Stochastic calculus & derivatives** -- randomness evolving through time,
+and the pricing built on top of it.
 
 | # | Project | Core mathematics | Tests |
 |---|---|---|---|
 | 15 | [stochastic-processes](https://github.com/TJT-Pro/stochastic-processes) | Random walks, Markov chains, Poisson processes, Brownian motion, martingales, first-passage times | 285 |
+| 24 | [stochastic-differential-equations](https://github.com/TJT-Pro/stochastic-differential-equations) | Euler-Maruyama, Milstein scheme, Ito's lemma | 55 |
 | 16 | [black-scholes](https://github.com/TJT-Pro/black-scholes) | Closed-form pricing, Greeks, implied volatility, binomial trees, Monte Carlo pricing | 84 |
+
+**424 tests.**
+
+**Numerical & computational methods** -- the computational engines
+everything else quietly leans on.
+
+| # | Project | Core mathematics | Tests |
+|---|---|---|---|
 | 17 | [automatic-differentiation](https://github.com/TJT-Pro/automatic-differentiation) | Dual numbers, forward mode, reverse-mode autodiff, backpropagation | 70 |
-| 18 | [time-series-mathematics](https://github.com/TJT-Pro/time-series-mathematics) | ACF/PACF, AR/MA/ARMA, Yule-Walker, ADF stationarity testing | 105 |
-| 19 | [bayesian-inference](https://github.com/TJT-Pro/bayesian-inference) | Conjugate priors, grid approximation, Metropolis-Hastings MCMC | 76 |
 | 20 | [ode-engine](https://github.com/TJT-Pro/ode-engine) | Euler methods, RK4, adaptive step-doubling | 45 |
 | 21 | [fourier-analysis](https://github.com/TJT-Pro/fourier-analysis) | DFT, Cooley-Tukey FFT, convolution, periodograms | 58 |
-| 22 | [svd-from-scratch](https://github.com/TJT-Pro/svd-from-scratch) | Singular value decomposition, pseudoinverse, condition numbers | 60 |
-| 23 | [convex-optimization](https://github.com/TJT-Pro/convex-optimization) | Newton's method, projected gradient descent, KKT/duality | 92 |
-| 24 | [stochastic-differential-equations](https://github.com/TJT-Pro/stochastic-differential-equations) | Euler-Maruyama, Milstein scheme, Ito's lemma | 55 |
 | 25 | [numerical-pde](https://github.com/TJT-Pro/numerical-pde) | Finite differences, von Neumann stability, Black-Scholes PDE | 66 |
+| 28 | [quasi-monte-carlo](https://github.com/TJT-Pro/quasi-monte-carlo) | Van der Corput and Halton sequences, discrepancy measures | 56 |
+
+**295 tests.**
+
+**Inference & learning from data** -- extracting structure and parameters
+from data rather than simulating a process forward.
+
+| # | Project | Core mathematics | Tests |
+|---|---|---|---|
+| 18 | [time-series-mathematics](https://github.com/TJT-Pro/time-series-mathematics) | ACF/PACF, AR/MA/ARMA, Yule-Walker, ADF stationarity testing | 105 |
+| 19 | [bayesian-inference](https://github.com/TJT-Pro/bayesian-inference) | Conjugate priors, grid approximation, Metropolis-Hastings MCMC | 76 |
 | 26 | [hidden-markov-models](https://github.com/TJT-Pro/hidden-markov-models) | Forward-backward algorithm, Viterbi, Baum-Welch | 45 |
 | 27 | [information-theory](https://github.com/TJT-Pro/information-theory) | Entropy, KL divergence, mutual information, Huffman coding | 97 |
-| 28 | [quasi-monte-carlo](https://github.com/TJT-Pro/quasi-monte-carlo) | Van der Corput and Halton sequences, discrepancy measures | 56 |
+| 22 | [svd-from-scratch](https://github.com/TJT-Pro/svd-from-scratch) | Singular value decomposition, pseudoinverse, condition numbers | 60 |
+
+**383 tests.**
+
+**Quant finance engineering** -- where the rest of it gets applied to an
+actual portfolio, and then gets stress-tested for where it lies to you.
+
+| # | Project | Core mathematics | Tests |
+|---|---|---|---|
+| 23 | [convex-optimization](https://github.com/TJT-Pro/convex-optimization) | Newton's method, projected gradient descent, KKT/duality | 92 |
 | 29 | [portfolio-mathematics](https://github.com/TJT-Pro/portfolio-mathematics) | Markowitz frontier, CAPM, Kelly criterion | 76 |
 | 30 | [model-risk](https://github.com/TJT-Pro/model-risk) | VaR backtesting, AIC/BIC, backtest overfitting demonstration | 64 |
 
+**232 tests.**
+
 **1,334 tests, 16 repositories.**
+
+<details>
+<summary>Build order (the sequence these were actually written in)</summary>
+
+1. stochastic-processes
+2. black-scholes
+3. automatic-differentiation
+4. time-series-mathematics
+5. bayesian-inference
+6. ode-engine
+7. fourier-analysis
+8. svd-from-scratch
+9. convex-optimization
+10. stochastic-differential-equations
+11. numerical-pde
+12. hidden-markov-models
+13. information-theory
+14. quasi-monte-carlo
+15. portfolio-mathematics
+16. model-risk
+
+</details>
 
 **2,247 tests, 30 projects, one dataset.**
 
