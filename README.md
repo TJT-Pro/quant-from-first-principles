@@ -225,4 +225,4 @@ MIT. Use it, fork it, learn from it.
 
 ## Contact
 
-Trading, tools, socials: [TJT_Pro on TradingView](https://www.tradingview.com/u/TJT_Pro/)
+Trading, tools, contacts: [TJT_Pro on TradingView](https://www.tradingview.com/u/TJT_Pro/)
