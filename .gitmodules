@@ -1,0 +1,48 @@
+[submodule "phase6_stochastic_calculus/stochastic-processes"]
+	path = phase6_stochastic_calculus/stochastic-processes
+	url = https://github.com/TJT-Pro/stochastic-processes.git
+[submodule "phase6_stochastic_calculus/stochastic-differential-equations"]
+	path = phase6_stochastic_calculus/stochastic-differential-equations
+	url = https://github.com/TJT-Pro/stochastic-differential-equations.git
+[submodule "phase6_stochastic_calculus/black-scholes"]
+	path = phase6_stochastic_calculus/black-scholes
+	url = https://github.com/TJT-Pro/black-scholes.git
+[submodule "phase7_numerical_methods/ode-engine"]
+	path = phase7_numerical_methods/ode-engine
+	url = https://github.com/TJT-Pro/ode-engine.git
+[submodule "phase7_numerical_methods/numerical-pde"]
+	path = phase7_numerical_methods/numerical-pde
+	url = https://github.com/TJT-Pro/numerical-pde.git
+[submodule "phase7_numerical_methods/fourier-analysis"]
+	path = phase7_numerical_methods/fourier-analysis
+	url = https://github.com/TJT-Pro/fourier-analysis.git
+[submodule "phase7_numerical_methods/quasi-monte-carlo"]
+	path = phase7_numerical_methods/quasi-monte-carlo
+	url = https://github.com/TJT-Pro/quasi-monte-carlo.git
+[submodule "phase7_numerical_methods/automatic-differentiation"]
+	path = phase7_numerical_methods/automatic-differentiation
+	url = https://github.com/TJT-Pro/automatic-differentiation.git
+[submodule "phase7_numerical_methods/svd-from-scratch"]
+	path = phase7_numerical_methods/svd-from-scratch
+	url = https://github.com/TJT-Pro/svd-from-scratch.git
+[submodule "phase8_inference_and_learning/bayesian-inference"]
+	path = phase8_inference_and_learning/bayesian-inference
+	url = https://github.com/TJT-Pro/bayesian-inference.git
+[submodule "phase8_inference_and_learning/hidden-markov-models"]
+	path = phase8_inference_and_learning/hidden-markov-models
+	url = https://github.com/TJT-Pro/hidden-markov-models.git
+[submodule "phase8_inference_and_learning/information-theory"]
+	path = phase8_inference_and_learning/information-theory
+	url = https://github.com/TJT-Pro/information-theory.git
+[submodule "phase8_inference_and_learning/time-series-mathematics"]
+	path = phase8_inference_and_learning/time-series-mathematics
+	url = https://github.com/TJT-Pro/time-series-mathematics.git
+[submodule "phase9_quant_finance/portfolio-mathematics"]
+	path = phase9_quant_finance/portfolio-mathematics
+	url = https://github.com/TJT-Pro/portfolio-mathematics.git
+[submodule "phase9_quant_finance/convex-optimization"]
+	path = phase9_quant_finance/convex-optimization
+	url = https://github.com/TJT-Pro/convex-optimization.git
+[submodule "phase9_quant_finance/model-risk"]
+	path = phase9_quant_finance/model-risk
+	url = https://github.com/TJT-Pro/model-risk.git
