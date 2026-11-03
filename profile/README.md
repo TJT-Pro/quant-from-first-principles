@@ -26,55 +26,52 @@ the check that the from-scratch version is right.
 **2,247 tests. 30 projects. One dataset.**
 
 Together, these 30 projects make up **Quant From First Principles** --
-derive it, implement it, verify it, apply it to real data. The
-foundational curriculum lives in the repository of that name; the more
-advanced projects built on top of it are each published as their own
-repository, listed below.
+derive it, implement it, verify it, apply it to real data. All 30 live
+in the one repository of that name, organized into nine phases.
 
 Yours: [TJT_Pro on TradingView](https://www.tradingview.com/u/TJT_Pro/)
 
 ## Start here
 
-The foundational curriculum lives in
-[quant-from-first-principles](https://github.com/TJT-Pro/quant-from-first-principles):
-14 projects, phase 1 through 5 -- discrete math and probability,
-statistics and inference, decision theory and risk, calculus, linear
-algebra and optimization. 913 tests.
+Everything lives in
+[quant-from-first-principles](https://github.com/TJT-Pro/quant-from-first-principles).
+Phases 1 through 5 are the foundational curriculum, 14 projects --
+discrete math and probability, statistics and inference, decision theory
+and risk, calculus, linear algebra and optimization. 913 tests.
 
 ## The quant engine
 
-Sixteen more advanced repositories built on that foundation, published
-independently so each is a complete, discoverable piece of work on its
-own. Publishing was in progress in the order listed under each
-repository's own README; as of now (13/09/2026), all repositories are complete!
+Phases 6 through 9: sixteen more advanced projects built on that
+foundation. Each folder is a complete project with its own README, tests,
+and verification command. 1,334 tests.
 
-**Stochastic calculus & derivatives**
+**Stochastic calculus & derivatives** (phase 6)
 
-- [stochastic-processes](https://github.com/TJT-Pro/stochastic-processes) -- random walks, Markov chains, Poisson processes, Brownian motion, martingales, first-passage times
-- [stochastic-differential-equations](https://github.com/TJT-Pro/stochastic-differential-equations) -- Euler-Maruyama, Milstein scheme, Ito's lemma
-- [black-scholes](https://github.com/TJT-Pro/black-scholes) -- closed-form pricing, Greeks, implied volatility, binomial trees, Monte Carlo pricing
+- [stochastic-processes](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase6_stochastic_calculus/stochastic-processes) -- random walks, Markov chains, Poisson processes, Brownian motion, martingales, first-passage times
+- [stochastic-differential-equations](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase6_stochastic_calculus/stochastic-differential-equations) -- Euler-Maruyama, Milstein scheme, Ito's lemma
+- [black-scholes](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase6_stochastic_calculus/black-scholes) -- closed-form pricing, Greeks, implied volatility, binomial trees, Monte Carlo pricing
 
-**Numerical & computational methods**
+**Numerical & computational methods** (phase 7)
 
-- [automatic-differentiation](https://github.com/TJT-Pro/automatic-differentiation) -- dual numbers, forward mode, reverse-mode autodiff, backpropagation
-- [ode-engine](https://github.com/TJT-Pro/ode-engine) -- Euler methods, RK4, adaptive step-doubling
-- [fourier-analysis](https://github.com/TJT-Pro/fourier-analysis) -- DFT, Cooley-Tukey FFT, convolution, periodograms
-- [numerical-pde](https://github.com/TJT-Pro/numerical-pde) -- finite differences, von Neumann stability, the Black-Scholes PDE
-- [quasi-monte-carlo](https://github.com/TJT-Pro/quasi-monte-carlo) -- van der Corput and Halton sequences, discrepancy measures
+- [automatic-differentiation](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase7_numerical_methods/automatic-differentiation) -- dual numbers, forward mode, reverse-mode autodiff, backpropagation
+- [ode-engine](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase7_numerical_methods/ode-engine) -- Euler methods, RK4, adaptive step-doubling
+- [fourier-analysis](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase7_numerical_methods/fourier-analysis) -- DFT, Cooley-Tukey FFT, convolution, periodograms
+- [numerical-pde](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase7_numerical_methods/numerical-pde) -- finite differences, von Neumann stability, the Black-Scholes PDE
+- [quasi-monte-carlo](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase7_numerical_methods/quasi-monte-carlo) -- van der Corput and Halton sequences, discrepancy measures
 
-**Inference & learning from data**
+**Inference & learning from data** (phase 8)
 
-- [time-series-mathematics](https://github.com/TJT-Pro/time-series-mathematics) -- ACF/PACF, AR/MA/ARMA, Yule-Walker, ADF stationarity testing
-- [bayesian-inference](https://github.com/TJT-Pro/bayesian-inference) -- conjugate priors, grid approximation, Metropolis-Hastings MCMC
-- [hidden-markov-models](https://github.com/TJT-Pro/hidden-markov-models) -- forward-backward algorithm, Viterbi, Baum-Welch
-- [information-theory](https://github.com/TJT-Pro/information-theory) -- entropy, KL divergence, mutual information, Huffman coding
-- [svd-from-scratch](https://github.com/TJT-Pro/svd-from-scratch) -- singular value decomposition, pseudoinverse, condition numbers
+- [time-series-mathematics](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase8_inference_and_learning/time-series-mathematics) -- ACF/PACF, AR/MA/ARMA, Yule-Walker, ADF stationarity testing
+- [bayesian-inference](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase8_inference_and_learning/bayesian-inference) -- conjugate priors, grid approximation, Metropolis-Hastings MCMC
+- [hidden-markov-models](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase8_inference_and_learning/hidden-markov-models) -- forward-backward algorithm, Viterbi, Baum-Welch
+- [information-theory](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase8_inference_and_learning/information-theory) -- entropy, KL divergence, mutual information, Huffman coding
+- [svd-from-scratch](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase8_inference_and_learning/svd-from-scratch) -- singular value decomposition, pseudoinverse, condition numbers
 
-**Quant finance engineering**
+**Quant finance engineering** (phase 9)
 
-- [convex-optimization](https://github.com/TJT-Pro/convex-optimization) -- Newton's method, projected gradient descent, KKT/duality
-- [portfolio-mathematics](https://github.com/TJT-Pro/portfolio-mathematics) -- Markowitz frontier, CAPM, Kelly criterion
-- [model-risk](https://github.com/TJT-Pro/model-risk) -- VaR backtesting, AIC/BIC, backtest overfitting demonstration (the capstone)
+- [convex-optimization](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase9_quant_finance/convex-optimization) -- Newton's method, projected gradient descent, KKT/duality
+- [portfolio-mathematics](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase9_quant_finance/portfolio-mathematics) -- Markowitz frontier, CAPM, Kelly criterion
+- [model-risk](https://github.com/TJT-Pro/quant-from-first-principles/tree/main/phase9_quant_finance/model-risk) -- VaR backtesting, AIC/BIC, backtest overfitting demonstration (the capstone)
 
 ## Why from scratch
 
