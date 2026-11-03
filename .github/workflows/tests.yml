@@ -8,6 +8,7 @@ jobs:
   pytest:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.11", "3.12"]
     steps:
@@ -21,14 +22,27 @@ jobs:
       - name: Install test dependencies
         run: pip install pytest numpy scipy
 
-      - name: Run test suite
-        run: python -m pytest --tb=short -q
+      # Each project is collected on its own, from inside its folder, the
+      # same way each one ran as a standalone repository. Several projects
+      # share module names (fx_application.py, linear_algebra.py), so a
+      # single pytest run from the root would import the wrong module.
+      - name: Run every project's test suite
+        run: |
+          status=0
+          for d in $(find . -mindepth 2 -maxdepth 2 -type d -path './phase*' | sort); do
+            echo "::group::$d"
+            (cd "$d" && python -m pytest --tb=short -q) || { echo "::error::tests failed in $d"; status=1; }
+            echo "::endgroup::"
+          done
+          exit $status
 
       - name: Run oracle verification for every project
         run: |
-          set -e
-          for f in $(find . -name "cli.py" | sort); do
+          status=0
+          for f in $(find . -name "cli.py" -path './phase*' | sort); do
             d=$(dirname "$f")
-            echo "== $d =="
-            (cd "$d" && python cli.py verify)
+            echo "::group::$d"
+            (cd "$d" && python cli.py verify) || { echo "::error::verification failed in $d"; status=1; }
+            echo "::endgroup::"
           done
+          exit $status

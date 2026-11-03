@@ -4,10 +4,9 @@ Thirty mathematical systems, implemented from their definitions, in Python,
 with no NumPy or SciPy inside the implementations themselves. Those libraries
 appear only as independent oracles used to verify the code is right.
 
-This repository holds 14 of the 30 -- the foundational curriculum. The
-other 16, built on top of this foundation, are published as their own
-repositories; see the full collection at
-[github.com/TJT-Pro](https://github.com/TJT-Pro).
+All 30 live in this one repository: the 14-project foundational
+curriculum in phases 1 to 5, and the 16-project quant engine built on top
+of it in phases 6 to 9.
 
 ![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
@@ -49,19 +48,19 @@ pass/fail table. Nothing is "verified" by eyeballing a plot.
 
 ## Repository structure
 
-This repository holds the foundational curriculum — 14 projects, phase 1
-through 5, discrete math up through PCA and optimization. The 16 more
-advanced projects that build on this foundation (stochastic calculus,
-option pricing, Bayesian inference, and the rest of a working quant toolkit)
-are each their own standalone repository, linked below. They're kept
-separate because each one is a complete, independently useful piece of
-work — a Black-Scholes engine or an automatic differentiation engine
-shouldn't require cloning thirty projects to find.
+Nine phases. Phases 1 to 5 are the foundational curriculum, 14 projects,
+discrete math up through PCA and optimization. Phases 6 to 9 are the 16
+more advanced projects that build on that foundation: stochastic
+calculus, option pricing, Bayesian inference, and the rest of a working
+quant toolkit. Each project folder is still complete on its own, with
+its own README, tests, and `cli.py verify` command, and each one arrived
+here with its full commit history intact.
 
-The five phases below follow the order things were actually learned in,
+The first five phases follow the order things were actually learned in,
 not a strict prerequisite chain. Decision science comes before formal
 calculus because that's the order curiosity took, not because expected
-value depends on derivatives.
+value depends on derivatives. Phases 6 to 9 are grouped by mathematical
+family rather than build order.
 
 ```
 phase1_foundations/        Projects 1-2   Discrete Math, Probability
@@ -87,9 +86,27 @@ phase5_advanced_tools/     Projects 12-14 Linear Algebra, PCA, Optimization
                             optimization as the engine underneath modern
                             machine learning -- the natural place to end
                             the foundational curriculum.
+
+phase6_stochastic_calculus/      Stochastic processes, SDEs, Black-Scholes
+                                  Randomness evolving through time, and the
+                                  pricing built on top of it.
+
+phase7_numerical_methods/        Autodiff, ODEs, Fourier, PDEs, quasi-Monte Carlo
+                                  The computational engines everything else
+                                  quietly leans on.
+
+phase8_inference_and_learning/   Time series, Bayesian, HMMs, information theory, SVD
+                                  Extracting structure and parameters from
+                                  data rather than simulating forward.
+
+phase9_quant_finance/            Convex optimization, portfolios, model risk
+                                  Where the rest of it gets applied to an
+                                  actual portfolio, then stress-tested.
+
+profile/                         Source of the TJT-Pro GitHub profile page
 ```
 
-### Foundations (this repository)
+### Foundations (phases 1 to 5)
 
 | # | Project | Core mathematics | Tests |
 |---|---|---|---|
@@ -110,23 +127,21 @@ phase5_advanced_tools/     Projects 12-14 Linear Algebra, PCA, Optimization
 
 **913 tests, 14 projects.**
 
-### Quant engine (standalone repositories)
+### Quant engine (phases 6 to 9)
 
 Sixteen more advanced projects, grouped below by mathematical family
 rather than by build order, since that's how they're actually related to
-each other. Each is a complete, independent repository with its own
-README, tests, and `cli.py verify` command. Publishing is in progress in
-the sequence given in "Build order" below; a link that 404s just means
-that repository hasn't gone up yet.
+each other. Each folder is a complete project with its own README, tests,
+and `cli.py verify` command.
 
 **Stochastic calculus & derivatives** -- randomness evolving through time,
 and the pricing built on top of it.
 
 | # | Project | Core mathematics | Tests |
 |---|---|---|---|
-| 15 | [stochastic-processes](https://github.com/TJT-Pro/stochastic-processes) | Random walks, Markov chains, Poisson processes, Brownian motion, martingales, first-passage times | 285 |
-| 24 | [stochastic-differential-equations](https://github.com/TJT-Pro/stochastic-differential-equations) | Euler-Maruyama, Milstein scheme, Ito's lemma | 55 |
-| 16 | [black-scholes](https://github.com/TJT-Pro/black-scholes) | Closed-form pricing, Greeks, implied volatility, binomial trees, Monte Carlo pricing | 84 |
+| 15 | [stochastic-processes](phase6_stochastic_calculus/stochastic-processes) | Random walks, Markov chains, Poisson processes, Brownian motion, martingales, first-passage times | 285 |
+| 24 | [stochastic-differential-equations](phase6_stochastic_calculus/stochastic-differential-equations) | Euler-Maruyama, Milstein scheme, Ito's lemma | 55 |
+| 16 | [black-scholes](phase6_stochastic_calculus/black-scholes) | Closed-form pricing, Greeks, implied volatility, binomial trees, Monte Carlo pricing | 84 |
 
 **424 tests.**
 
@@ -135,11 +150,11 @@ everything else quietly leans on.
 
 | # | Project | Core mathematics | Tests |
 |---|---|---|---|
-| 17 | [automatic-differentiation](https://github.com/TJT-Pro/automatic-differentiation) | Dual numbers, forward mode, reverse-mode autodiff, backpropagation | 70 |
-| 20 | [ode-engine](https://github.com/TJT-Pro/ode-engine) | Euler methods, RK4, adaptive step-doubling | 45 |
-| 21 | [fourier-analysis](https://github.com/TJT-Pro/fourier-analysis) | DFT, Cooley-Tukey FFT, convolution, periodograms | 58 |
-| 25 | [numerical-pde](https://github.com/TJT-Pro/numerical-pde) | Finite differences, von Neumann stability, Black-Scholes PDE | 66 |
-| 28 | [quasi-monte-carlo](https://github.com/TJT-Pro/quasi-monte-carlo) | Van der Corput and Halton sequences, discrepancy measures | 56 |
+| 17 | [automatic-differentiation](phase7_numerical_methods/automatic-differentiation) | Dual numbers, forward mode, reverse-mode autodiff, backpropagation | 70 |
+| 20 | [ode-engine](phase7_numerical_methods/ode-engine) | Euler methods, RK4, adaptive step-doubling | 45 |
+| 21 | [fourier-analysis](phase7_numerical_methods/fourier-analysis) | DFT, Cooley-Tukey FFT, convolution, periodograms | 58 |
+| 25 | [numerical-pde](phase7_numerical_methods/numerical-pde) | Finite differences, von Neumann stability, Black-Scholes PDE | 66 |
+| 28 | [quasi-monte-carlo](phase7_numerical_methods/quasi-monte-carlo) | Van der Corput and Halton sequences, discrepancy measures | 56 |
 
 **295 tests.**
 
@@ -148,11 +163,11 @@ from data rather than simulating a process forward.
 
 | # | Project | Core mathematics | Tests |
 |---|---|---|---|
-| 18 | [time-series-mathematics](https://github.com/TJT-Pro/time-series-mathematics) | ACF/PACF, AR/MA/ARMA, Yule-Walker, ADF stationarity testing | 105 |
-| 19 | [bayesian-inference](https://github.com/TJT-Pro/bayesian-inference) | Conjugate priors, grid approximation, Metropolis-Hastings MCMC | 76 |
-| 26 | [hidden-markov-models](https://github.com/TJT-Pro/hidden-markov-models) | Forward-backward algorithm, Viterbi, Baum-Welch | 45 |
-| 27 | [information-theory](https://github.com/TJT-Pro/information-theory) | Entropy, KL divergence, mutual information, Huffman coding | 97 |
-| 22 | [svd-from-scratch](https://github.com/TJT-Pro/svd-from-scratch) | Singular value decomposition, pseudoinverse, condition numbers | 60 |
+| 18 | [time-series-mathematics](phase8_inference_and_learning/time-series-mathematics) | ACF/PACF, AR/MA/ARMA, Yule-Walker, ADF stationarity testing | 105 |
+| 19 | [bayesian-inference](phase8_inference_and_learning/bayesian-inference) | Conjugate priors, grid approximation, Metropolis-Hastings MCMC | 76 |
+| 26 | [hidden-markov-models](phase8_inference_and_learning/hidden-markov-models) | Forward-backward algorithm, Viterbi, Baum-Welch | 45 |
+| 27 | [information-theory](phase8_inference_and_learning/information-theory) | Entropy, KL divergence, mutual information, Huffman coding | 97 |
+| 22 | [svd-from-scratch](phase8_inference_and_learning/svd-from-scratch) | Singular value decomposition, pseudoinverse, condition numbers | 60 |
 
 **383 tests.**
 
@@ -161,13 +176,13 @@ actual portfolio, and then gets stress-tested for where it lies to you.
 
 | # | Project | Core mathematics | Tests |
 |---|---|---|---|
-| 23 | [convex-optimization](https://github.com/TJT-Pro/convex-optimization) | Newton's method, projected gradient descent, KKT/duality | 92 |
-| 29 | [portfolio-mathematics](https://github.com/TJT-Pro/portfolio-mathematics) | Markowitz frontier, CAPM, Kelly criterion | 76 |
-| 30 | [model-risk](https://github.com/TJT-Pro/model-risk) | VaR backtesting, AIC/BIC, backtest overfitting demonstration | 64 |
+| 23 | [convex-optimization](phase9_quant_finance/convex-optimization) | Newton's method, projected gradient descent, KKT/duality | 92 |
+| 29 | [portfolio-mathematics](phase9_quant_finance/portfolio-mathematics) | Markowitz frontier, CAPM, Kelly criterion | 76 |
+| 30 | [model-risk](phase9_quant_finance/model-risk) | VaR backtesting, AIC/BIC, backtest overfitting demonstration | 64 |
 
 **232 tests.**
 
-**1,334 tests, 16 repositories.**
+**1,334 tests, 16 projects.**
 
 <details>
 <summary>Build order (the sequence these were actually written in)</summary>
@@ -204,6 +219,11 @@ cd phase1_foundations/project1_logic_combinatorics
 python3 -m pytest
 python3 cli.py verify
 ```
+
+Run tests from inside a project folder rather than from the repository
+root. Several projects have modules with the same file name (for
+example `fx_application.py`), so each suite is collected on its own,
+exactly as CI does on every push.
 
 ## What "from scratch" means, and doesn't
 
